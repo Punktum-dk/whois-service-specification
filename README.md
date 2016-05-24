@@ -192,7 +192,7 @@ Then we get to the data.
 | Registered | Date of registration |
 | Expires | Date of expiration |
 | Registration period | Registration period (1, 2, 3 or 5 years) |
-| VID | Indication whether VID service is active, values either '`yes`' or '`no`' |
+| VID | Indication whether VID service is active, values either `yes` or `no` |
 | Dnssec | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation` |
 | Status | Status of the domain name |
 | Nameservers | List of nameservers, serving the inquired domain name |
