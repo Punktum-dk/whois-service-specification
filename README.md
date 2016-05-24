@@ -22,6 +22,8 @@ Revision: 1.0
         - [Example query extracting handles](#example-query-extracting-handles)
         - [Example query extracting anonymous handles](#example-query-extracting-anonymous-handles)
     - [Host name request](#host-name-request)
+        - [Request](#request)
+        - [Response](#response)
     - [Handle request](#handle-request)
         - [Example query extracting anonymous handle](#example-query-extracting-anonymous-handle)
     - [Additional Help](#additional-help)
@@ -270,13 +272,13 @@ $ whois ' --show-handles eksempel.dk'
 
 ## Host name request
 
-#### Request
+### Request
 
 ```bash
 $ whois auth02.ns.dk-hostmaster.dk
 ```
 
-#### Response
+### Response
 
 ```
 Nameserver:           auth02.ns.dk-hostmaster.dk
