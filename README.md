@@ -152,7 +152,7 @@ Copyright notice.
 # Version: 2.0.2
 ```
 
-This is the version string of the service. The service uses semantic versioning, so this is major release `2`, bug fix release `2`. No feature releases has been made indicated by the minor release indicator: `0`.
+This is the version string of the service. The service uses (semantic versioning)[semver.org], so this is major release `2`, bug fix release `2`. No feature releases has been made indicated by the minor release indicator: `0`.
 
 ```
 # The data in the DK Whois database is provided by DK Hostmaster A/S
@@ -224,6 +224,39 @@ $ whois ' --show-handles eksempel.dk'
 ```
 
 #### Response
+
+```bash
+Domain:               eksempel.dk
+DNS:                  eksempel.dk
+Registered:           1999-05-17
+Expires:              2017-06-30
+Registration period:  5 years
+VID:                  yes
+Dnssec:               Signed delegation
+Status:               Active
+
+Registrant
+Handle:               DKHM1-DK
+Name:                 DK HOSTMASTER A/S
+Address:              Kalvebod Brygge 45, 3.
+Postalcode:           1560
+City:                 København V
+Country:              DK
+
+Administrator
+Handle:               DKHM1-DK
+Name:                 DK HOSTMASTER A/S
+Address:              Kalvebod Brygge 45, 3.
+Postalcode:           1560
+City:                 K?benhavn V
+Country:              DK
+
+Nameservers
+Hostname:             auth01.ns.dk-hostmaster.dk
+Handle:               DKHM1-DK
+Hostname:             auth02.ns.dk-hostmaster.dk
+Handle:               DKHM1-DK
+```
 
 ### Example query extracting anonymous handles
 
