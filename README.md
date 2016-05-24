@@ -192,8 +192,8 @@ Then we get to the data.
 | Registered | Date of registration |
 | Expires | Date of expiration |
 | Registration period | Registration period (1, 2, 3 or 5 years) |
-| VID | Indication whether VID service is active |
-| Dnssec | Indication whether DNSSEC service is active |
+| VID | Indication whether VID service is active, values either '`yes`' or '`no`' |
+| Dnssec | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation` |
 | Status | Status of the domain name |
 | Nameservers | List of nameservers, serving the inquired domain name |
 
@@ -248,7 +248,7 @@ Handle:               DKHM1-DK
 Name:                 DK HOSTMASTER A/S
 Address:              Kalvebod Brygge 45, 3.
 Postalcode:           1560
-City:                 K?benhavn V
+City:                 København V
 Country:              DK
 
 Nameservers
