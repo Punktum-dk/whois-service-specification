@@ -71,9 +71,9 @@ In general the service is not localized and all WHOIS information is provided in
 
 The service supports the following encodings:
 
-- ISO8859-1
-- UTF-8
+- ISO8859-1 (default)
 - Punycode (see also [RFC:3492])
+- UTF-8
 
 Please see the section on service for more information on how to utilize this.
 
@@ -191,7 +191,7 @@ Then we get to the data.
 | Field | Description |
 | ----- | ----------- |
 | Domain | The domain name, should match the one enquired about |
-| DNS | Punycode version of the domain name inquired [RFC:3492] |
+| DNS | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:3492] |
 | Registered | Date of registration [ISO-8601] |
 | Expires | Date of expiration [ISO-8601] |
 | Registration period | Registration period (`1`, `2`, `3` or `5` years) |
@@ -202,7 +202,7 @@ Then we get to the data.
 
 ### Example query using punycode
 
-This is a way to inquire on IDNA domains.
+This is a way to inquire on IDNA domains using punycode.
 
 #### Request
 
@@ -211,6 +211,8 @@ $ whois xn--4cabco7dk5a.dk
 ```
 
 #### Response
+
+Observe the difference between the `Domain` and `DNS` fields
 
 ```
 Domain:               æøåöäüé.dk
