@@ -374,7 +374,7 @@ The above example is relevant for nameserver hosts not ending in `.dk`, since DK
 #### Request
 
 ```bash
-whois " --show-handles auth02.ns.dk-hostmaster.dk"
+$ whois " --show-handles auth02.ns.dk-hostmaster.dk"
 ```
 
 #### Response
@@ -422,7 +422,7 @@ Country:              DK
 #### Request
 
 ```bash
-whois -c dk ANON-DK
+$ whois -c dk ANON-DK
 ```
 
 #### Response
