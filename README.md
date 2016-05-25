@@ -25,7 +25,8 @@ Revision: 1.0
         - [Example query for host information](#example-query-for-host-information)
         - [Example query for host and handle information](#example-query-for-host-and-handle-information)
     - [Handle request](#handle-request)
-        - [Example query extracting anonymous handle](#example-query-extracting-anonymous-handle)
+        - [Example query for public handle](#example-query-for-public-handle)
+        - [Example query for anonymous handle](#example-query-for-anonymous-handle)
     - [Additional Help](#additional-help)
 - [References](#references)
 - [Resources](#resources)
@@ -104,7 +105,7 @@ $ whois eksempel.dk
 
 #### Response
 
-The standard reponse look as follows:
+The standard response look as follows:
 
 ```bash
 # Hello XX.XX.XX.XX. Your session has been logged.
@@ -395,6 +396,8 @@ Country:              DK
 
 In addition to domain and hostname inquiries, you can inquire handles (contact-ids).
 
+### Example query for public handle
+
 #### Request
 
 ```bash
@@ -403,7 +406,7 @@ $ whois -c dk DKHM1-DK
 
 Please note the specification on the country code.
 
-#### Reponse
+#### Response
 
 ```
 Handle:               DKHM1-DK
@@ -414,7 +417,7 @@ City:                 København V
 Country:              DK
 ```
 
-### Example query extracting anonymous handle
+### Example query for anonymous handle
 
 #### Request
 
