@@ -202,6 +202,37 @@ Then we get to the data.
 
 ### Example query using punycode
 
+This is a way to inquire on IDN domains.
+
+#### Request
+
+```bash
+$ whois xn--4cabco7dk5a.dk
+```
+
+#### Response
+
+```
+Domain:               æøåöäüé.dk
+DNS:                  xn--4cabco7dk5a.dk
+Registered:           2010-06-14
+Expires:              2016-06-30
+Registration period:  1 year
+VID:                  no
+Dnssec:               Unsigned delegation
+Status:               Active
+
+Nameservers
+Hostname:             auth01.ns.dk-hostmaster.dk
+Hostname:             auth02.ns.dk-hostmaster.dk
+```
+
+### Example query with domain marked for deletion
+
+If a domain name is marked for deletion prior to the expiration date a deletion date is calculated.
+
+`Delete date:          2016-04-14`
+
 #### Request
 
 ```bash
@@ -210,11 +241,21 @@ $ whois eksempel.dk
 
 #### Response
 
-### Example query with domain marked for deletion
+```
+Domain:               eksempel.dk
+DNS:                  eksempel.dk
+Registered:           2010-06-14
+Expires:              2016-06-30
+Delete date:          2016-04-14
+Registration period:  1 year
+VID:                  no
+Dnssec:               Unsigned delegation
+Status:               Active
 
-#### Request
-
-#### Response
+Nameservers
+Hostname:             auth01.ns.dk-hostmaster.dk
+Hostname:             auth02.ns.dk-hostmaster.dk
+```
 
 ### Example query extracting handles
 
@@ -263,15 +304,42 @@ Handle:               DKHM1-DK
 
 ### Example query extracting anonymous handles
 
+If you make a inquiry asking for handle information and the users are maked anonymous in the WHOIS service: `***N/A***` is returned.
+
+#### Request
+
 ```bash
 $ whois ' --show-handles eksempel.dk'
 ```
 
-#### Request
-
 #### Response
 
+```bash
+Domain:               eksempel.dk
+DNS:                  eksempel.dk
+Registered:           1999-05-17
+Expires:              2017-06-30
+Registration period:  5 years
+VID:                  yes
+Dnssec:               Signed delegation
+Status:               Active
+
+Registrant
+Handle:               ***N/A***
+
+Administrator
+Handle:               ***N/A***
+
+Nameservers
+Hostname:             auth01.ns.dk-hostmaster.dk
+Handle:               DKHM1-DK
+Hostname:             auth02.ns.dk-hostmaster.dk
+Handle:               DKHM1-DK
+```
+
 ## Host name request
+
+You can inquire nameserver hosts.
 
 ### Example query
 
@@ -287,6 +355,15 @@ $ whois auth02.ns.dk-hostmaster.dk
 Nameserver:           auth02.ns.dk-hostmaster.dk
 Glue:                 Being spooled
 ```
+
+If you inquire on a host without a glue record, you get the following response:
+
+```
+Nameserver:           auth02.ns.dk-hostmaster.dk
+Glue:                 Not being spooled
+```
+
+The above example is relevant for nameserver hosts not ending in `.dk`, since DK Hostmaster require glue records for nameservers ending in `.dk` and glue records are not required for nameservers with hostnames hosted with other TLDs.
 
 ## Handle request
 
@@ -315,7 +392,15 @@ Country:              DK
 
 #### Request
 
+```bash
+whois -c dk ANON-DK
+```
+
 #### Response
+
+```
+Handle:               ***N/A***
+```
 
 ## Additional Help 
 
