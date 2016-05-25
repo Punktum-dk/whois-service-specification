@@ -191,10 +191,10 @@ Then we get to the data.
 | Field | Description |
 | ----- | ----------- |
 | Domain | The domain name, should match the one enquired about |
-| DNS | Punycode version of the domain name inquired  
-| Registered | Date of registration |
-| Expires | Date of expiration |
-| Registration period | Registration period (1, 2, 3 or 5 years) |
+| DNS | Punycode version of the domain name inquired [RFC:3492][RFC:3492] |
+| Registered | Date of registration (ISO-8601)[ISO-8601] |
+| Expires | Date of expiration (ISO-8601)[ISO-8601] |
+| Registration period | Registration period (`1`, `2`, `3` or `5` years) |
 | VID | Indication whether VID service is active, values either `yes` or `no` |
 | Dnssec | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation` |
 | Status | Status of the domain name |
@@ -202,7 +202,7 @@ Then we get to the data.
 
 ### Example query using punycode
 
-This is a way to inquire on IDN domains.
+This is a way to inquire on IDNA domains.
 
 #### Request
 
@@ -444,3 +444,5 @@ The DK Hostmaster website:
 [RFC:3492]: https://tools.ietf.org/html/rfc3492
 
 [RFC:3912]: https://tools.ietf.org/html/rfc3912
+
+[ISO-8601]: https://en.wikipedia.org/wiki/ISO_8601
