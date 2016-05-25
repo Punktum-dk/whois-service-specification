@@ -61,7 +61,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
 
-The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS standard.
+The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS standard (see also [RFC:3912][RFC:3912]).
 
 # Implementation Limitations
 
@@ -73,7 +73,7 @@ The service supports the following encodings:
 
 - ISO8859-1
 - UTF-8
-- Punycode.
+- Punycode (see also [RFC:3492][RFC:3492])
 
 Please see the section on service for more information on how to utilize this.
 
@@ -415,6 +415,7 @@ $ whois -h whois.dk-hostmaster.dk HELP
 Here is a list of documents and references used in this document
 
 * General Terms and Conditions: https://www.dk-hostmaster.dk/fileadmin/filer/pdf/generelle_vilkaar/general-conditions.pdf
+* RFC: 3492 Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA): https://tools.ietf.org/html/rfc3492
 * RFC: 3912 WHOIS Protocol Specification: https://tools.ietf.org/html/rfc3912
 * Documentation on the format of a domain name with the DK Hostmaster A/S registry: https://www.dk-hostmaster.dk/english/technical-administration/forms/register-domainname/
 
@@ -439,3 +440,7 @@ For issue reporting related to this specification, the WHOIS implementation or t
 The DK Hostmaster website:
 
   * `https://www.dk-hostmaster.dk/english/technical-administration/tech-notes/whois-service/`
+
+[RFC:3492]: https://tools.ietf.org/html/rfc3492
+
+[RFC:3912]: https://tools.ietf.org/html/rfc3912
