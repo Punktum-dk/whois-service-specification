@@ -22,7 +22,8 @@ Revision: 1.0
         - [Example query extracting handles](#example-query-extracting-handles)
         - [Example query extracting anonymous handles](#example-query-extracting-anonymous-handles)
     - [Host name request](#host-name-request)
-        - [Example query](#example-query)
+        - [Example query for host information](#example-query-for-host-information)
+        - [Example query for host and handle information](#example-query-for-host-and-handle-information)
     - [Handle request](#handle-request)
         - [Example query extracting anonymous handle](#example-query-extracting-anonymous-handle)
     - [Additional Help](#additional-help)
@@ -343,9 +344,9 @@ Handle:               DKHM1-DK
 
 You can inquire nameserver hosts.
 
-### Example query
+### Example query for host information
 
-#### Request
+#### Request 
 
 ```bash
 $ whois auth02.ns.dk-hostmaster.dk
@@ -366,6 +367,29 @@ Glue:                 Not being spooled
 ```
 
 The above example is relevant for nameserver hosts not ending in `.dk`, since DK Hostmaster require glue records for nameservers ending in `.dk` and glue records are not required for nameservers with hostnames hosted with other TLDs.
+
+### Example query for host and handle information
+
+#### Request
+
+```bash
+whois " --show-handles auth02.ns.dk-hostmaster.dk"
+```
+
+#### Response
+
+```
+Nameserver:           auth02.ns.dk-hostmaster.dk
+Glue:                 Being spooled
+
+Contact
+Handle:               DKHM1-DK
+Name:                 DK HOSTMASTER A/S
+Address:              Kalvebod Brygge 45, 3.
+Postalcode:           1560
+City:                 København V
+Country:              DK
+```
 
 ## Handle request
 
