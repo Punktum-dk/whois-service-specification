@@ -239,7 +239,7 @@ The WHOIS service supports respoding in UTF-8 by request as opposed to the defau
 #### Request
 
 ```bash
-$ whois --charset="utf8 xn--4cabco7dk5a.dk"
+$ whois " --charset=utf8 xn--4cabco7dk5a.dk"
 ```
 
 #### Response
