@@ -18,6 +18,7 @@ Revision: 1.0
 - [Service](#service)
     - [Domain name request](#domain-name-request)
         - [Example query using punycode](#example-query-using-punycode)
+        - [Example query using UTF-8](#example-query-using-utf-8)
         - [Example query with domain marked for deletion](#example-query-with-domain-marked-for-deletion)
         - [Example query extracting handles](#example-query-extracting-handles)
         - [Example query extracting anonymous handles](#example-query-extracting-anonymous-handles)
@@ -215,6 +216,33 @@ $ whois xn--4cabco7dk5a.dk
 #### Response
 
 Observe the difference between the `Domain` and `DNS` fields
+
+```
+Domain:               æøåöäüé.dk
+DNS:                  xn--4cabco7dk5a.dk
+Registered:           2010-06-14
+Expires:              2016-06-30
+Registration period:  1 year
+VID:                  no
+Dnssec:               Unsigned delegation
+Status:               Active
+
+Nameservers
+Hostname:             auth01.ns.dk-hostmaster.dk
+Hostname:             auth02.ns.dk-hostmaster.dk
+```
+
+### Example query using UTF-8
+
+The WHOIS service supports respoding in UTF-8 by request as opposed to the default of ISO-8859-1.
+
+#### Request
+
+```bash
+$ whois --charset="utf8 xn--4cabco7dk5a.dk"
+```
+
+#### Response
 
 ```
 Domain:               æøåöäüé.dk
