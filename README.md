@@ -445,6 +445,15 @@ City:                 København V
 Country:              DK
 ```
 
+| Field | Description |
+| ----- | ----------- |
+| Handle | The handle, should match the one enquired about |
+| Name | Name associated with the entity referenced by the above handle |
+| Address | Address associated with the entity referenced by the above handle |
+| Postalcode | Postalcode associated with the above address |
+| City | Postalcode associated with the above address |
+| Country | 2-letter country code associated with the above address, specified in [ISO-3166] alpha-2 format |
+
 ### Example query for anonymous handle
 
 #### Request
@@ -472,9 +481,12 @@ $ whois -h whois.dk-hostmaster.dk HELP
 Here is a list of documents and references used in this document
 
 * General Terms and Conditions: https://www.dk-hostmaster.dk/fileadmin/filer/pdf/generelle_vilkaar/general-conditions.pdf
-* RFC: 3492 Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA): https://tools.ietf.org/html/rfc3492
-* RFC: 3912 WHOIS Protocol Specification: https://tools.ietf.org/html/rfc3912
+* RFC:3492 Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA): https://tools.ietf.org/html/rfc3492
+* RFC:3912 WHOIS Protocol Specification: https://tools.ietf.org/html/rfc3912
 * Documentation on the format of a domain name with the DK Hostmaster A/S registry: https://www.dk-hostmaster.dk/english/technical-administration/forms/register-domainname/
+* ISO-8601: International date format: https://en.wikipedia.org/wiki/ISO_8601
+* ISO-3166-1: Alpha-2. two-letter country code: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+* ISO-8859-1: 8-bit single-byte coded graphic character sets: https://en.wikipedia.org/wiki/ISO/IEC_8859-1
 
 # Resources
 
@@ -503,3 +515,8 @@ The DK Hostmaster website:
 [RFC:3912]: https://tools.ietf.org/html/rfc3912
 
 [ISO-8601]: https://en.wikipedia.org/wiki/ISO_8601
+
+[ISO-3166-1]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+
+[ISO-8859-1]: https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+
