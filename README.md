@@ -12,6 +12,7 @@ Revision: 1.0
     - [License](#license)
     - [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
+- [Implementation Features](#implementation-features)
 - [Implementation Limitations](#implementation-limitations)
     - [Encoding](#encoding)
     - [Rate Limiting](#rate-limiting)
@@ -68,6 +69,16 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
 
 The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS standard (see also [RFC:3912]).
+
+# Implementation Features
+
+The service implements the following features.
+
+- Domain name inquiry  also with extended information on handles
+- Host name inquiry also with extended on handles
+- Handle inquiry
+- Support for multiple encoding (see: Encodings below)
+- Support for both IPv6 and IPv6
 
 # Implementation Limitations
 
