@@ -495,6 +495,17 @@ Country:              DK
 | City | Postalcode associated with the above address |
 | Country | 2-letter country code associated with the above address, specified in [ISO-3166-1] alpha-2 format |
 
+Please note that due to the representation in DK Hostmasters system for handling contacts the following rules are applied to postal information.
+
+For Denmark the local representation is chosen and the international representation is discarded. For other countries the international representation is chosen and the local representation is discarded. Please see the table below.
+
+| Denmark | Other country |
+| ----------- | ----------- |
+| **Local representation** | Local representation |
+| International representation | **International representation** |
+
+Please refer to [the EPP Service specification](https://github.com/DK-Hostmaster/epp-service-specification#create-contact) for more information on creation of contact objects in the DK Hostmaster system.
+
 ### Example query for public handle using UTF-8
 
 As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--charset` parameter.
