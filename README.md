@@ -473,7 +473,7 @@ In addition to domain and hostname inquiries, you can inquire handles (contact-i
 $ whois -c dk DKHM1-DK
 ```
 
-Please note the specification on the country code.
+Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
 
 #### Response
 
@@ -505,6 +505,8 @@ As described earlier [ISO-8859-1] is the default encoding, so in order to retrie
 $ whois -c dk " --charset=utf8 DKHM1-DK"
 ```
 
+Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
+
 ```
 Handle:               DKHM1-DK
 Name:                 DK HOSTMASTER A/S
@@ -521,6 +523,8 @@ Country:              DK
 ```bash
 $ whois -c dk ANON-DK
 ```
+
+Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
 
 #### Response
 
