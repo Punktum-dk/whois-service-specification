@@ -12,7 +12,7 @@ Revision: 1.0
     - [License](#license)
     - [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
-- [Implementation Features](#implementation-features)
+- [Features](#features)
 - [Implementation Limitations](#implementation-limitations)
     - [Encoding](#encoding)
     - [Rate Limiting](#rate-limiting)
@@ -70,7 +70,7 @@ DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model 
 
 The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS standard (see also [RFC:3912]).
 
-# Implementation Features
+# Features
 
 The service implements the following features.
 
