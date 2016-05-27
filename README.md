@@ -26,6 +26,7 @@ Revision: 1.0
     - [Host name query](#host-name-query)
         - [Example query for host information](#example-query-for-host-information)
         - [Example query for host and handle information](#example-query-for-host-and-handle-information)
+        - [Example query for host and handle information using UTF-8](#example-query-for-host-and-handle-information-using-utf-8)
     - [Handle inquiry](#handle-inquiry)
         - [Example query for public handle](#example-query-for-public-handle)
         - [Example query for public handle using UTF-8](#example-query-for-public-handle-using-utf-8)
@@ -424,6 +425,31 @@ City:                 København V
 Country:              DK
 ```
 
+### Example query for host and handle information using UTF-8
+
+As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--charset` parameter.
+
+#### Request
+
+```bash
+$ whois " --show-handles --charset=utf8 auth02.ns.dk-hostmaster.dk"
+```
+
+#### Response
+
+```
+Nameserver:           auth02.ns.dk-hostmaster.dk
+Glue:                 Being spooled
+
+Contact
+Handle:               DKHM1-DK
+Name:                 DK HOSTMASTER A/S
+Address:              Kalvebod Brygge 45, 3.
+Postalcode:           1560
+City:                 København V
+Country:              DK
+```
+
 ## Handle inquiry
 
 In addition to domain and hostname inquiries, you can inquire handles (contact-ids).
@@ -460,12 +486,12 @@ Country:              DK
 
 ### Example query for public handle using UTF-8
 
-As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--char-set` parameter.
+As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--charset` parameter.
 
 #### Request
 
 ```bash
-$ whois -c dk " --char-set=utf8 DKHM1-DK"
+$ whois -c dk " --charset=utf8 DKHM1-DK"
 ```
 
 ```
