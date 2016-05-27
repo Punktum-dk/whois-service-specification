@@ -77,9 +77,9 @@ In general the service is not localized and all WHOIS information is provided in
 
 The service supports the following encodings:
 
-- ISO8859-1 (default)
+- [ISO-8859-1] (default) can be specified as: `iso-8859-1`, `latin-1` or `latin1`
 - Punycode (see also [RFC:3492])
-- UTF-8
+- UTF-8, can be specified as: `utf-8` or `utf8`
 
 Please see the section on service for more information on how to utilize this.
 
