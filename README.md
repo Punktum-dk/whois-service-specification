@@ -456,7 +456,7 @@ Country:              DK
 | Address | Address associated with the entity referenced by the above handle |
 | Postalcode | Postalcode associated with the above address |
 | City | Postalcode associated with the above address |
-| Country | 2-letter country code associated with the above address, specified in [ISO-3166] alpha-2 format |
+| Country | 2-letter country code associated with the above address, specified in [ISO-3166-1] alpha-2 format |
 
 ### Example query for public handle using UTF-8
 
