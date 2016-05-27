@@ -16,17 +16,19 @@ Revision: 1.0
     - [Encoding](#encoding)
     - [Rate Limiting](#rate-limiting)
 - [Service](#service)
-    - [Domain name request](#domain-name-request)
-        - [Example query using punycode](#example-query-using-punycode)
-        - [Example query using UTF-8](#example-query-using-utf-8)
-        - [Example query with domain marked for deletion](#example-query-with-domain-marked-for-deletion)
-        - [Example query extracting handles](#example-query-extracting-handles)
-        - [Example query extracting anonymous handles](#example-query-extracting-anonymous-handles)
-    - [Host name request](#host-name-request)
+    - [Domain name query](#domain-name-query)
+        - [Example query for domain name information](#example-query-for-domain-name-information)
+        - [Example domain name query using punycode](#example-domain-name-query-using-punycode)
+        - [Example domain name query using UTF-8](#example-domain-name-query-using-utf-8)
+        - [Example domain name query with domain marked for deletion](#example-domain-name-query-with-domain-marked-for-deletion)
+        - [Example domain name query including handles](#example-domain-name-query-including-handles)
+        - [Example domain name query extracting anonymous handles](#example-domain-name-query-extracting-anonymous-handles)
+    - [Host name query](#host-name-query)
         - [Example query for host information](#example-query-for-host-information)
         - [Example query for host and handle information](#example-query-for-host-and-handle-information)
-    - [Handle request](#handle-request)
+    - [Handle inquiry](#handle-inquiry)
         - [Example query for public handle](#example-query-for-public-handle)
+        - [Example query for public handle using UTF-8](#example-query-for-public-handle-using-utf-8)
         - [Example query for anonymous handle](#example-query-for-anonymous-handle)
     - [Additional Help](#additional-help)
 - [References](#references)
@@ -92,9 +94,11 @@ Meaning that `192.0.2.41` and `192.0.2.52` can not have simultanous connections,
 
 # Service
 
-## Domain name request
+## Domain name query
 
 This is an example of a standard inquiry for a domain name
+
+### Example query for domain name information
 
 #### Request
 
@@ -203,7 +207,7 @@ Then we get to the data.
 | Status | Status of the domain name: 'A' for active, 'S' marked for deletion and 'H' on hold if deletion date has been surpassed |
 | Nameservers | List of nameservers, serving the inquired domain name |
 
-### Example query using punycode
+### Example domain name query using punycode
 
 This is a way to inquire on IDNA domains using punycode.
 
@@ -232,9 +236,9 @@ Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
-### Example query using UTF-8
+### Example domain name query using UTF-8
 
-The WHOIS service supports respoding in UTF-8 by request as opposed to the default of ISO-8859-1.
+The WHOIS service supports responding in UTF-8 by request as opposed to the default of [ISO-8859-1].
 
 #### Request
 
@@ -259,7 +263,7 @@ Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
-### Example query with domain marked for deletion
+### Example domain name query with domain marked for deletion
 
 If a domain name is marked for deletion prior to the expiration date a deletion date is calculated.
 
@@ -289,9 +293,9 @@ Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
-### Example query extracting handles
+### Example domain name query including handles
 
-DK Hostmaster's WHOIS support extracting handles associated with a given domain.
+DK Hostmaster's WHOIS support listing handles associated with a given domain.
 
 #### Request
 
@@ -334,7 +338,7 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 Handle:               DKHM1-DK
 ```
 
-### Example query extracting anonymous handles
+### Example domain name query extracting anonymous handles
 
 If you make a inquiry asking for handle information and the users are maked anonymous in the WHOIS service: `***N/A***` is returned.
 
@@ -369,7 +373,7 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 Handle:               DKHM1-DK
 ```
 
-## Host name request
+## Host name query
 
 You can inquire nameserver hosts.
 
@@ -420,7 +424,7 @@ City:                 København V
 Country:              DK
 ```
 
-## Handle request
+## Handle inquiry
 
 In addition to domain and hostname inquiries, you can inquire handles (contact-ids).
 
@@ -453,6 +457,25 @@ Country:              DK
 | Postalcode | Postalcode associated with the above address |
 | City | Postalcode associated with the above address |
 | Country | 2-letter country code associated with the above address, specified in [ISO-3166] alpha-2 format |
+
+### Example query for public handle using UTF-8
+
+As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--char-set` parameter.
+
+#### Request
+
+```bash
+$ whois -c dk " --char-set=utf8 DKHM1-DK"
+```
+
+```
+Handle:               DKHM1-DK
+Name:                 DK HOSTMASTER A/S
+Address:              Kalvebod Brygge 45, 3.
+Postalcode:           1560
+City:                 København V
+Country:              DK
+```
 
 ### Example query for anonymous handle
 
