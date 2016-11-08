@@ -600,14 +600,14 @@ Resources for DK Hostmaster WHOIS support can be found below.
 
 DK Hostmaster operates a mailing list for discussion and inquiries  about the DK Hostmaster WHOIS service. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
 
-* `whois-discuss+subscribe@liste.dk-hostmaster.dk`
+* `tech-discuss+subscribe@liste.dk-hostmaster.dk`
 
 <a name="issue-reporting"></a>
 ## Issue Reporting
 
 For issue reporting related to this specification, the WHOIS implementation or the production environment, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise use the address specified below:
 
- * `tech@dk-hostmaster.dk`
+ * `info@dk-hostmaster.dk`
 
 <a name="additional-information"></a>
 ## Additional Information
