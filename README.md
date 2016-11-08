@@ -612,9 +612,9 @@ For issue reporting related to this specification, the WHOIS implementation or t
 <a name="additional-information"></a>
 ## Additional Information
 
-The DK Hostmaster website:
+The DK Hostmaster website service page
 
-  * `https://www.dk-hostmaster.dk/english/technical-administration/tech-notes/whois-service/`
+  * `https://www.dk-hostmaster.dk/en/whois`
 
 [RFC:3492]: https://tools.ietf.org/html/rfc3492
 
