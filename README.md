@@ -97,7 +97,7 @@ In general the service is not localized and all WHOIS information is provided in
 The service supports the following encodings:
 
 - [ISO-8859-1] (default) can be specified as: `iso-8859-1`, `latin-1` or `latin1`
-- Punycode (see also [RFC:3492])
+- Punycode (see also [RFC:5891])
 - UTF-8, can be specified as: `utf-8` or `utf8`
 
 Please see the section on service for more information on how to utilize this.
@@ -222,7 +222,7 @@ Then we get to the data.
 | Field | Description |
 | ----- | ----------- |
 | Domain | The domain name, should match the one enquired about |
-| DNS | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:3492] |
+| DNS | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891] |
 | Registered | Date of registration [ISO-8601] |
 | Expires | Date of expiration [ISO-8601] |
 | Registration period | Registration period (`1`, `2`, `3` or `5` years) |
@@ -607,7 +607,7 @@ $ whois -h whois.dk-hostmaster.dk HELP
 Here is a list of documents and references used in this document
 
 * General Terms and Conditions: https://www.dk-hostmaster.dk/fileadmin/filer/pdf/generelle_vilkaar/general-conditions.pdf
-* RFC:3492 Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA): https://tools.ietf.org/html/rfc3492
+* RFC:5891 Internationalized Domain Names in Applications (IDNA): Protocol: https://tools.ietf.org/html/rfc5891
 * RFC:3912 WHOIS Protocol Specification: https://tools.ietf.org/html/rfc3912
 * Documentation on the format of a domain name with the DK Hostmaster A/S registry: https://www.dk-hostmaster.dk/english/technical-administration/forms/register-domainname/
 * ISO-8601: International date format: https://en.wikipedia.org/wiki/ISO_8601
@@ -640,7 +640,7 @@ The DK Hostmaster website service page
 
   * `https://www.dk-hostmaster.dk/en/whois`
 
-[RFC:3492]: https://tools.ietf.org/html/rfc3492
+[RFC:5891]: https://tools.ietf.org/html/rfc5891
 
 [RFC:3912]: https://tools.ietf.org/html/rfc3912
 
