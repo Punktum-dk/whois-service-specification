@@ -573,8 +573,32 @@ Handle:               ***N/A***
 
 Additional help can be obtainted on the command line using the following command:
 
+#### Request
+
 ```bash
 $ whois -h whois.dk-hostmaster.dk HELP
+```
+
+#### Response
+
+```bash
+# Query syntax:
+#   [<options>] <query_string>
+# Available options:
+#   --charset=<charset>
+#   --accesscode=<accesscode>[:<accesscode>[:<accesscode>]]
+#   --show-handles
+# Available charsets:
+#   latin-1 also known as iso-8859-1 (default)
+#   utf-8
+# Example:
+#   --charset=latin-1 dk-hostmaster.dk
+#   --accesscode=C8850DF92ECB6CF581EF6C8FD31C1CDF dk-hostmaster.dk
+# Hint:
+#   Most Unix whois clients have problems with these options and tries
+#   to parse them themselves. To get around this, do lookups like this:
+#     whois " --charset=latin-1 dk-hostmaster.dk"
+#   Note the additional space after the first quote.
 ```
 
 <a name="references"></a>
