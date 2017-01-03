@@ -84,7 +84,7 @@ The service implements the following features.
 - Host name inquiry also with extended on handles
 - Handle inquiry
 - Support for multiple encodings (see: Encodings below)
-- Support for both IPv6 and IPv6
+- Support for both IPv4 and IPv6
 
 <a name="implementation-limitations"></a>
 # Implementation Limitations
