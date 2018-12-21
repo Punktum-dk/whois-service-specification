@@ -59,7 +59,7 @@ This specification describes version 2 (2.0.x) of the DK Hostmaster WHOIS Implem
 The document describes the current DK Hostmaster WHOIS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
-Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/whois-service-specification/blob/master/README.md), using the gitprint service.
+Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/whois-service-specification/blob/master/README.md), using the **gitprint** service.
 
 <a id="license"></a>
 ### License
@@ -115,7 +115,7 @@ Current limit is set to 1 request per second.
 
 In addition the service only allow 1 TCP-connection per. (IPv4)/24.
 
-Meaning that `192.0.2.41` and `192.0.2.52` can not have simultanous connections, but `192.0.2.41` and `192.0.3.52` can.
+Meaning that `192.0.2.41` and `192.0.2.52` can not have simultaneous connections, but `192.0.2.41` and `192.0.3.52` can.
 
 <a id="service"></a>
 ## Service
@@ -227,15 +227,15 @@ Then we get to the data.
 
 | Field | Description |
 | ----- | ----------- |
-| Domain | The domain name, should match the one enquired about |
-| DNS | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891] |
-| Registered | Date of registration [ISO-8601] |
-| Expires | Date of expiration [ISO-8601] |
-| Registration period | Registration period (`1`, `2`, `3` or `5` years) |
-| VID | Indication whether VID service is active, values either `yes` or `no` |
-| Dnssec | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation` |
-| Status | Status of the domain name: 'A' for active, 'S' marked for deletion and 'H' on hold if deletion date has been surpassed |
-| Nameservers | List of nameservers, serving the inquired domain name |
+| ´Domain´ | The domain name, should match the one enquired about |
+| ´DNS´ | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891] |
+| ´Registered´ | Date of registration [ISO-8601] |
+| ´Expires´ | Date of expiration [ISO-8601] |
+| ´Registration period´ | Registration period (`1`, `2`, `3` or `5` years) |
+| ´VID´ | Indication whether VID service is active, values either `yes` or `no` |
+| ´Dnssec´ | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation` |
+| ´Status´ | Status of the domain name: 'A' for active, 'S' marked for deletion and 'H' on hold if deletion date has been surpassed |
+| ´Nameservers´ | List of name servers, serving the inquired domain name |
 
 <a id="example-domain-name-query-using-punycode"></a>
 #### Example domain name query using punycode
@@ -383,7 +383,7 @@ Handle:               DKHM1-DK
 <a id="example-domain-name-query-extracting-anonymous-handles"></a>
 #### Example domain name query extracting anonymous handles
 
-If you make a inquiry asking for handle information and the users are maked anonymous in the WHOIS service: `***N/A***` is returned.
+If you make a inquiry asking for handle information and the users are marked anonymous in the WHOIS service: `***N/A***` is returned.
 
 <a id="request-5"></a>
 ##### Request
@@ -421,7 +421,7 @@ Handle:               DKHM1-DK
 <a id="host-name-query"></a>
 ### Host name query
 
-You can inquire nameserver hosts.
+You can inquire name server hosts.
 
 <a id="example-query-for-host-information"></a>
 #### Example query for host information
@@ -448,7 +448,7 @@ Nameserver:           auth02.ns.dk-hostmaster.dk
 Glue:                 Not being spooled
 ```
 
-The above example is relevant for nameserver hosts not ending in `.dk`, since DK Hostmaster require glue records for nameservers ending in `.dk` and glue records are not required for nameservers with hostnames hosted with other TLDs.
+The above example is relevant for name server hosts not ending in `.dk`, since DK Hostmaster require glue records for name servers ending in `.dk` and glue records are not required for name servers with hostnames hosted with other TLDs.
 
 <a id="example-query-for-host-and-handle-information"></a>
 #### Example query for host and handle information
@@ -538,11 +538,11 @@ Country:              DK
 | Handle | The handle, should match the one enquired about |
 | Name | Name associated with the entity referenced by the above handle |
 | Address | Address associated with the entity referenced by the above handle |
-| Postalcode | Postalcode associated with the above address |
-| City | Postalcode associated with the above address |
+| Postalcode | Postal code associated with the above address |
+| City | Postal code associated with the above address |
 | Country | 2-letter country code associated with the above address, specified in [ISO-3166-1] alpha-2 format |
 
-Please note that due to the representation in DK Hostmasters system for handling contacts the following rules are applied to postal information.
+Please note that due to the representation in DK Hostmaster's system for handling contacts the following rules are applied to postal information.
 
 For Denmark the local representation is chosen and the international representation is discarded. For other countries the international representation is chosen and the local representation is discarded. Please see the table below.
 
@@ -598,7 +598,7 @@ Handle:               ***N/A***
 <a id="additional-help"></a>
 ### Additional Help
 
-Additional help can be obtainted on the command line using the following command:
+Additional help can be obtained on the command line using the following command:
 
 <a id="request"></a>
 #### Request
