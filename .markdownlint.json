@@ -1,0 +1,11 @@
+{
+  "default": true,
+  "blanks-around-headings": false,
+  "no-inline-html": false,
+  "line-length": false,
+  "first-line-h1": false,
+  "no-duplicate-heading": false,
+  "commands-show-output": false,
+  "fenced-code-language": false,
+  "no-bare-urls": false
+}
