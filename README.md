@@ -1,3 +1,5 @@
+![DK Hostmaster Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
+
 # DK Hostmaster WHOIS Service Specification
 
 2016/04/27
@@ -89,7 +91,7 @@ The service implements the following features.
 <a name="implementation-limitations"></a>
 # Implementation Limitations
 
-In general the service is not localized and all WHOIS information is provided in English. 
+In general the service is not localized and all WHOIS information is provided in English.
 
 <a name="encoding"></a>
 ## Encoding
@@ -105,7 +107,7 @@ Please see the section on service for more information on how to utilize this.
 <a name="rate-limiting"></a>
 ## Rate Limiting
 
-We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service. 
+We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service.
 
 Current limit is set to 1 request per second.
 
@@ -410,7 +412,7 @@ You can inquire nameserver hosts.
 <a name="example-query-for-host-information"></a>
 ### Example query for host information
 
-#### Request 
+#### Request
 
 ```bash
 $ whois auth02.ns.dk-hostmaster.dk
@@ -569,7 +571,7 @@ Handle:               ***N/A***
 ```
 
 <a name="additional-help"></a>
-## Additional Help 
+## Additional Help
 
 Additional help can be obtainted on the command line using the following command:
 
