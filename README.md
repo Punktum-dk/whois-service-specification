@@ -7,43 +7,69 @@ Revision: 1.0
 
 # Table of Contents
 
-<!-- MarkdownTOC bracket=round depth=3 -->
+<!-- MarkdownTOC bracket=round levels="1,2,3, 4" indent="  " -->
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
-    - [License](#license)
-    - [Document History](#document-history)
+  - [License](#license)
+  - [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [Features](#features)
 - [Implementation Limitations](#implementation-limitations)
-    - [Encoding](#encoding)
-    - [Rate Limiting](#rate-limiting)
+  - [Encoding](#encoding)
+  - [Rate Limiting](#rate-limiting)
 - [Service](#service)
-    - [Domain name query](#domain-name-query)
-        - [Example query for domain name information](#example-query-for-domain-name-information)
-        - [Example domain name query using punycode](#example-domain-name-query-using-punycode)
-        - [Example domain name query using UTF-8](#example-domain-name-query-using-utf-8)
-        - [Example domain name query with domain marked for deletion](#example-domain-name-query-with-domain-marked-for-deletion)
-        - [Example domain name query including handles](#example-domain-name-query-including-handles)
-        - [Example domain name query extracting anonymous handles](#example-domain-name-query-extracting-anonymous-handles)
-    - [Host name query](#host-name-query)
-        - [Example query for host information](#example-query-for-host-information)
-        - [Example query for host and handle information](#example-query-for-host-and-handle-information)
-        - [Example query for host and handle information using UTF-8](#example-query-for-host-and-handle-information-using-utf-8)
-    - [Handle inquiry](#handle-inquiry)
-        - [Example query for public handle](#example-query-for-public-handle)
-        - [Example query for public handle using UTF-8](#example-query-for-public-handle-using-utf-8)
-        - [Example query for anonymous handle](#example-query-for-anonymous-handle)
-    - [Additional Help](#additional-help)
+  - [Domain name query](#domain-name-query)
+    - [Example query for domain name information](#example-query-for-domain-name-information)
+      - [Request](#request)
+      - [Response](#response)
+    - [Example domain name query using punycode](#example-domain-name-query-using-punycode)
+      - [Request](#request-1)
+      - [Response](#response-1)
+    - [Example domain name query using UTF-8](#example-domain-name-query-using-utf-8)
+      - [Request](#request-2)
+      - [Response](#response-2)
+    - [Example domain name query with domain marked for deletion](#example-domain-name-query-with-domain-marked-for-deletion)
+      - [Request](#request-3)
+      - [Response](#response-3)
+    - [Example domain name query including handles](#example-domain-name-query-including-handles)
+      - [Request](#request-4)
+      - [Response](#response-4)
+    - [Example domain name query extracting anonymous handles](#example-domain-name-query-extracting-anonymous-handles)
+      - [Request](#request-5)
+      - [Response](#response-5)
+  - [Host name query](#host-name-query)
+    - [Example query for host information](#example-query-for-host-information)
+      - [Request](#request-6)
+      - [Response](#response-6)
+    - [Example query for host and handle information](#example-query-for-host-and-handle-information)
+      - [Request](#request-7)
+      - [Response](#response-7)
+    - [Example query for host and handle information using UTF-8](#example-query-for-host-and-handle-information-using-utf-8)
+      - [Request](#request-8)
+      - [Response](#response-8)
+  - [Handle inquiry](#handle-inquiry)
+    - [Example query for public handle](#example-query-for-public-handle)
+      - [Request](#request-9)
+      - [Response](#response-9)
+    - [Example query for public handle using UTF-8](#example-query-for-public-handle-using-utf-8)
+      - [Request](#request-10)
+    - [Example query for anonymous handle](#example-query-for-anonymous-handle)
+      - [Request](#request-11)
+      - [Response](#response-10)
+  - [Additional Help](#additional-help)
+      - [Request](#request-12)
+      - [Response](#response-11)
 - [References](#references)
 - [Resources](#resources)
-    - [Mailing list](#mailing-list)
-    - [Issue Reporting](#issue-reporting)
-    - [Additional Information](#additional-information)
+  - [Mailing list](#mailing-list)
+  - [Issue Reporting](#issue-reporting)
+  - [Additional Information](#additional-information)
 
 <!-- /MarkdownTOC -->
 
 <a name="introduction"></a>
+<a id="introduction"></a>
 # Introduction
 
 This document describes and specifies the implementation offered by DK Hostmaster A/S for interaction with the central registry for the ccTLD dk using the WHOIS Service. It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of the WHOIS protocol and possibly DNS registration.
@@ -51,6 +77,7 @@ This document describes and specifies the implementation offered by DK Hostmaste
 The WHOIS service in not optimal for structured querying, both due to the lack of structure in the protocol specification and due to the constraints on the public service offered by DK Hostmaster. If you are a registrar, you might be interested in [the DK Hostmaster Domain Availability Service (DAS)](https://github.com/DK-Hostmaster/das-service-specification) as an alternative.
 
 <a name="about-this-document"></a>
+<a id="about-this-document"></a>
 # About this Document
 
 This specification describes version 2 (2.0.x) of the DK Hostmaster WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
@@ -60,17 +87,20 @@ Any future extensions and possible additions and changes to the implementation a
 Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/whois-service-specification/blob/master/README.md), using the gitprint service.
 
 <a name="license"></a>
+<a id="license"></a>
 ## License
 
 This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
 <a name="document-history"></a>
+<a id="document-history"></a>
 ## Document History
 
 * 1.0 2016-04-27
   * Initial revision
 
 <a name="the-dk-registry-in-brief"></a>
+<a id="the-dk-registry-in-brief"></a>
 # The .dk Registry in Brief
 
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
@@ -78,6 +108,7 @@ DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model 
 The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS standard (see also [RFC:3912]).
 
 <a name="features"></a>
+<a id="features"></a>
 # Features
 
 The service implements the following features.
@@ -89,11 +120,13 @@ The service implements the following features.
 - Support for both IPv4 and IPv6
 
 <a name="implementation-limitations"></a>
+<a id="implementation-limitations"></a>
 # Implementation Limitations
 
 In general the service is not localized and all WHOIS information is provided in English.
 
 <a name="encoding"></a>
+<a id="encoding"></a>
 ## Encoding
 
 The service supports the following encodings:
@@ -105,6 +138,7 @@ The service supports the following encodings:
 Please see the section on service for more information on how to utilize this.
 
 <a name="rate-limiting"></a>
+<a id="rate-limiting"></a>
 ## Rate Limiting
 
 We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service.
@@ -116,16 +150,20 @@ In addition the service only allow 1 TCP-connection per. (IPv4)/24.
 Meaning that `192.0.2.41` and `192.0.2.52` can not have simultanous connections, but `192.0.2.41` and `192.0.3.52` can.
 
 <a name="service"></a>
+<a id="service"></a>
 # Service
 
 <a name="domain-name-query"></a>
+<a id="domain-name-query"></a>
 ## Domain name query
 
 This is an example of a standard inquiry for a domain name
 
 <a name="example-query-for-domain-name-information"></a>
+<a id="example-query-for-domain-name-information"></a>
 ### Example query for domain name information
 
+<a id="request"></a>
 #### Request
 
 We inquire about the domain name: `eksempel.dk`
@@ -134,6 +172,7 @@ We inquire about the domain name: `eksempel.dk`
 $ whois eksempel.dk
 ```
 
+<a id="response"></a>
 #### Response
 
 The standard response look as follows:
@@ -234,16 +273,19 @@ Then we get to the data.
 | Nameservers | List of nameservers, serving the inquired domain name |
 
 <a name="example-domain-name-query-using-punycode"></a>
+<a id="example-domain-name-query-using-punycode"></a>
 ### Example domain name query using punycode
 
 This is a way to inquire on IDNA domains using punycode.
 
+<a id="request-1"></a>
 #### Request
 
 ```bash
 $ whois xn--4cabco7dk5a.dk
 ```
 
+<a id="response-1"></a>
 #### Response
 
 Observe the difference between the `Domain` and `DNS` fields
@@ -264,16 +306,19 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
 <a name="example-domain-name-query-using-utf-8"></a>
+<a id="example-domain-name-query-using-utf-8"></a>
 ### Example domain name query using UTF-8
 
 The WHOIS service supports responding in UTF-8 by request as opposed to the default of [ISO-8859-1].
 
+<a id="request-2"></a>
 #### Request
 
 ```bash
 $ whois " --charset=utf8 æøåöäüé.dk"
 ```
 
+<a id="response-2"></a>
 #### Response
 
 ```
@@ -292,18 +337,21 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
 <a name="example-domain-name-query-with-domain-marked-for-deletion"></a>
+<a id="example-domain-name-query-with-domain-marked-for-deletion"></a>
 ### Example domain name query with domain marked for deletion
 
 If a domain name is marked for deletion prior to the expiration date a deletion date is calculated.
 
 `Delete date:          2016-04-14`
 
+<a id="request-3"></a>
 #### Request
 
 ```bash
 $ whois eksempel.dk
 ```
 
+<a id="response-3"></a>
 #### Response
 
 ```
@@ -323,16 +371,19 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
 <a name="example-domain-name-query-including-handles"></a>
+<a id="example-domain-name-query-including-handles"></a>
 ### Example domain name query including handles
 
 DK Hostmaster's WHOIS support listing handles associated with a given domain.
 
+<a id="request-4"></a>
 #### Request
 
 ```bash
 $ whois ' --show-handles eksempel.dk'
 ```
 
+<a id="response-4"></a>
 #### Response
 
 ```bash
@@ -369,16 +420,19 @@ Handle:               DKHM1-DK
 ```
 
 <a name="example-domain-name-query-extracting-anonymous-handles"></a>
+<a id="example-domain-name-query-extracting-anonymous-handles"></a>
 ### Example domain name query extracting anonymous handles
 
 If you make a inquiry asking for handle information and the users are maked anonymous in the WHOIS service: `***N/A***` is returned.
 
+<a id="request-5"></a>
 #### Request
 
 ```bash
 $ whois ' --show-handles eksempel.dk'
 ```
 
+<a id="response-5"></a>
 #### Response
 
 ```bash
@@ -405,19 +459,23 @@ Handle:               DKHM1-DK
 ```
 
 <a name="host-name-query"></a>
+<a id="host-name-query"></a>
 ## Host name query
 
 You can inquire nameserver hosts.
 
 <a name="example-query-for-host-information"></a>
+<a id="example-query-for-host-information"></a>
 ### Example query for host information
 
+<a id="request-6"></a>
 #### Request
 
 ```bash
 $ whois auth02.ns.dk-hostmaster.dk
 ```
 
+<a id="response-6"></a>
 #### Response
 
 ```
@@ -435,14 +493,17 @@ Glue:                 Not being spooled
 The above example is relevant for nameserver hosts not ending in `.dk`, since DK Hostmaster require glue records for nameservers ending in `.dk` and glue records are not required for nameservers with hostnames hosted with other TLDs.
 
 <a name="example-query-for-host-and-handle-information"></a>
+<a id="example-query-for-host-and-handle-information"></a>
 ### Example query for host and handle information
 
+<a id="request-7"></a>
 #### Request
 
 ```bash
 $ whois " --show-handles auth02.ns.dk-hostmaster.dk"
 ```
 
+<a id="response-7"></a>
 #### Response
 
 ```
@@ -459,16 +520,19 @@ Country:              DK
 ```
 
 <a name="example-query-for-host-and-handle-information-using-utf-8"></a>
+<a id="example-query-for-host-and-handle-information-using-utf-8"></a>
 ### Example query for host and handle information using UTF-8
 
 As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--charset` parameter.
 
+<a id="request-8"></a>
 #### Request
 
 ```bash
 $ whois " --show-handles --charset=utf8 auth02.ns.dk-hostmaster.dk"
 ```
 
+<a id="response-8"></a>
 #### Response
 
 ```
@@ -485,13 +549,16 @@ Country:              DK
 ```
 
 <a name="handle-inquiry"></a>
+<a id="handle-inquiry"></a>
 ## Handle inquiry
 
 In addition to domain and hostname inquiries, you can inquire handles (contact-ids).
 
 <a name="example-query-for-public-handle"></a>
+<a id="example-query-for-public-handle"></a>
 ### Example query for public handle
 
+<a id="request-9"></a>
 #### Request
 
 ```bash
@@ -500,6 +567,7 @@ $ whois -c dk DKHM1-DK
 
 Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
 
+<a id="response-9"></a>
 #### Response
 
 ```
@@ -532,10 +600,12 @@ For Denmark the local representation is chosen and the international representat
 Please refer to [the EPP Service specification](https://github.com/DK-Hostmaster/epp-service-specification#create-contact) for more information on creation of contact objects in the DK Hostmaster system.
 
 <a name="example-query-for-public-handle-using-utf-8"></a>
+<a id="example-query-for-public-handle-using-utf-8"></a>
 ### Example query for public handle using UTF-8
 
 As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--charset` parameter.
 
+<a id="request-10"></a>
 #### Request
 
 ```bash
@@ -554,8 +624,10 @@ Country:              DK
 ```
 
 <a name="example-query-for-anonymous-handle"></a>
+<a id="example-query-for-anonymous-handle"></a>
 ### Example query for anonymous handle
 
+<a id="request-11"></a>
 #### Request
 
 ```bash
@@ -564,6 +636,7 @@ $ whois -c dk ANON-DK
 
 Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
 
+<a id="response-10"></a>
 #### Response
 
 ```
@@ -571,16 +644,19 @@ Handle:               ***N/A***
 ```
 
 <a name="additional-help"></a>
+<a id="additional-help"></a>
 ## Additional Help
 
 Additional help can be obtainted on the command line using the following command:
 
+<a id="request-12"></a>
 #### Request
 
 ```bash
 $ whois -h whois.dk-hostmaster.dk HELP
 ```
 
+<a id="response-11"></a>
 #### Response
 
 ```bash
@@ -604,6 +680,7 @@ $ whois -h whois.dk-hostmaster.dk HELP
 ```
 
 <a name="references"></a>
+<a id="references"></a>
 # References
 
 Here is a list of documents and references used in this document
@@ -617,11 +694,13 @@ Here is a list of documents and references used in this document
 * ISO-8859-1: 8-bit single-byte coded graphic character sets: https://en.wikipedia.org/wiki/ISO/IEC_8859-1
 
 <a name="resources"></a>
+<a id="resources"></a>
 # Resources
 
 Resources for DK Hostmaster WHOIS support can be found below.
 
 <a name="mailing-list"></a>
+<a id="mailing-list"></a>
 ## Mailing list
 
 DK Hostmaster operates a mailing list for discussion and inquiries  about the DK Hostmaster WHOIS service. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
@@ -629,6 +708,7 @@ DK Hostmaster operates a mailing list for discussion and inquiries  about the DK
 * `tech-discuss+subscribe@liste.dk-hostmaster.dk`
 
 <a name="issue-reporting"></a>
+<a id="issue-reporting"></a>
 ## Issue Reporting
 
 For issue reporting related to this specification, the WHOIS implementation or the production environment, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise use the address specified below:
@@ -636,6 +716,7 @@ For issue reporting related to this specification, the WHOIS implementation or t
  * `info@dk-hostmaster.dk`
 
 <a name="additional-information"></a>
+<a id="additional-information"></a>
 ## Additional Information
 
 The DK Hostmaster website service page
