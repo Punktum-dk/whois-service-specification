@@ -7,39 +7,39 @@ Revision: 2.0
 
 ## Table of Contents
 
-<!-- MarkdownTOC bracket=round levels="1,2,3,4" indent="  " -->
+<!-- MarkdownTOC bracket=round levels="1,2,3,4" indent="  " autolink="true" -->
 
-- Introduction
-- About this Document
-  - License
-  - Document History
-- The .dk Registry in Brief
-- Features
-- Implementation Limitations
-  - Encoding
-  - Rate Limiting
-- Service
-  - Domain name query
-    - Example query for domain name information
-    - Example domain name query using punycode
-    - Example domain name query using UTF-8
-    - Example domain name query with domain marked for deletion
-    - Example domain name query including handles
-    - Example domain name query extracting anonymous handles
-  - Host name query
-    - Example query for host information
-  - Handle inquiry
-    - Example query for public handle
-    - Example query for public handle using UTF-8
-    - Example query for anonymous handle
-  - Additional Help
-    - Request
-    - Response
-- References
-- Resources
-  - Mailing list
-  - Issue Reporting
-  - Additional Information
+- [Introduction](#introduction)
+- [About this Document](#about-this-document)
+  - [License](#license)
+  - [Document History](#document-history)
+- [The .dk Registry in Brief](#the-dk-registry-in-brief)
+- [Features](#features)
+- [Implementation Limitations](#implementation-limitations)
+  - [Encoding](#encoding)
+  - [Rate Limiting](#rate-limiting)
+- [Service](#service)
+  - [Domain name query](#domain-name-query)
+    - [Example query for domain name information](#example-query-for-domain-name-information)
+    - [Example domain name query using punycode](#example-domain-name-query-using-punycode)
+    - [Example domain name query using UTF-8](#example-domain-name-query-using-utf-8)
+    - [Example domain name query with domain marked for deletion](#example-domain-name-query-with-domain-marked-for-deletion)
+    - [Example domain name query including handles](#example-domain-name-query-including-handles)
+    - [Example domain name query extracting anonymous handles](#example-domain-name-query-extracting-anonymous-handles)
+  - [Host name query](#host-name-query)
+    - [Example query for host information](#example-query-for-host-information)
+  - [Handle inquiry](#handle-inquiry)
+    - [Example query for public handle](#example-query-for-public-handle)
+    - [Example query for public handle using UTF-8](#example-query-for-public-handle-using-utf-8)
+    - [Example query for anonymous handle](#example-query-for-anonymous-handle)
+  - [Additional Help](#additional-help)
+    - [Request](#request)
+    - [Response](#response)
+- [References](#references)
+- [Resources](#resources)
+  - [Mailing list](#mailing-list)
+  - [Issue Reporting](#issue-reporting)
+  - [Additional Information](#additional-information)
 
 <!-- /MarkdownTOC -->
 
@@ -119,7 +119,6 @@ This is an example of a standard inquiry for a domain name
 
 #### Example query for domain name information
 
-<a id="request"></a>
 ##### Request
 
 We inquire about the domain name: `eksempel.dk`
@@ -128,7 +127,6 @@ We inquire about the domain name: `eksempel.dk`
 $ whois eksempel.dk
 ```
 
-<a id="response"></a>
 ##### Response
 
 The standard response look as follows:
@@ -232,14 +230,12 @@ Then we get to the data.
 
 This is a way to inquire on IDNA domains using punycode.
 
-<a id="request-1"></a>
 ##### Request
 
 ```bash
 $ whois xn--4cabco7dk5a.dk
 ```
 
-<a id="response-1"></a>
 ##### Response
 
 Observe the difference between the `Domain` and `DNS` fields
@@ -263,14 +259,12 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 
 The WHOIS service supports responding in UTF-8 by request as opposed to the default of [ISO-8859-1].
 
-<a id="request-2"></a>
 ##### Request
 
 ```bash
 $ whois " --charset=utf8 æøåöäüé.dk"
 ```
 
-<a id="response-2"></a>
 ##### Response
 
 ```
@@ -295,14 +289,12 @@ If a domain name is marked for deletion prior to the expiration date a deletion 
 
 `Delete date:          2019-07-14`
 
-<a id="request-3"></a>
 ##### Request
 
 ```bash
 $ whois eksempel.dk
 ```
 
-<a id="response-3"></a>
 ##### Response
 
 ```
@@ -324,14 +316,12 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 
 DK Hostmaster's WHOIS support listing handles associated with a given domain.
 
-<a id="request-4"></a>
 ##### Request
 
 ```bash
 $ whois ' --show-handles eksempel.dk'
 ```
 
-<a id="response-4"></a>
 ##### Response
 
 ```bash
@@ -361,14 +351,12 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 
 If you make a inquiry asking for handle information and the users are marked anonymous in the WHOIS service: `***N/A***` is returned.
 
-<a id="request-5"></a>
 ##### Request
 
 ```bash
 $ whois ' --show-handles eksempel.dk'
 ```
 
-<a id="response-5"></a>
 ##### Response
 
 ```bash
@@ -395,14 +383,12 @@ You can inquire name server hosts.
 
 #### Example query for host information
 
-<a id="request-6"></a>
 ##### Request
 
 ```bash
 $ whois auth02.ns.dk-hostmaster.dk
 ```
 
-<a id="response-6"></a>
 ##### Response
 
 ```
@@ -427,7 +413,6 @@ In addition to domain and hostname inquiries, you can inquire handles (contact-i
 
 #### Example query for public handle
 
-<a id="request-9"></a>
 ##### Request
 
 ```bash
@@ -436,7 +421,6 @@ $ whois -c dk DKHM1-DK
 
 Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
 
-<a id="response-9"></a>
 ##### Response
 
 ```
@@ -472,7 +456,6 @@ Please refer to [the EPP Service specification](https://github.com/DK-Hostmaster
 
 As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--charset` parameter.
 
-<a id="request-10"></a>
 ##### Request
 
 ```bash
@@ -492,7 +475,6 @@ Country:              DK
 
 #### Example query for anonymous handle
 
-<a id="request-11"></a>
 ##### Request
 
 ```bash
@@ -501,7 +483,6 @@ $ whois -c dk ANON-DK
 
 Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
 
-<a id="response-10"></a>
 ##### Response
 
 ```
