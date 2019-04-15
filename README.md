@@ -66,7 +66,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 - 2.0 2019-04-15
   - Major update based on the changes with major release 3.0.0 of the WHOIS service
   - Documenting removal of public information on non-registrant users for handle (users) and domain name inquiries
-  - Documenting removal of name server contacts for host (name servers) inquiries
+  - Documenting removal of name server contacts for host (name server) inquiries
 
 - 1.0 2016-04-27
   - Initial revision
