@@ -2,7 +2,7 @@
 
 # DK Hostmaster WHOIS Service Specification
 
-2019-04-15
+2019-04-30
 Revision: 2.0
 
 ## Table of Contents
@@ -63,7 +63,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 ### Document History
 
-- 2.0 2019-04-15
+- 2.0 2019-04-30
   - Major update based on the changes with major release 3.0.0 of the WHOIS service
   - Documenting removal of public information on non-registrant users for handle (users) and domain name inquiries
   - Documenting removal of name server contacts for host (name server) inquiries
