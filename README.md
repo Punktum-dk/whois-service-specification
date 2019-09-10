@@ -7,7 +7,7 @@ Revision: 2.0
 
 ## Table of Contents
 
-<!-- MarkdownTOC bracket=round levels="1,2,3,4" indent="  " autolink="true" -->
+<!-- MarkdownTOC bracket=round levels="1,2,3,4" indent="  " autolink="true" autoanchor="true" -->
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
@@ -43,12 +43,14 @@ Revision: 2.0
 
 <!-- /MarkdownTOC -->
 
+<a id="introduction"></a>
 ## Introduction
 
 This document describes and specifies the implementation offered by DK Hostmaster A/S for interaction with the central registry for the ccTLD dk using the WHOIS Service. It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of the WHOIS protocol and possibly DNS registration.
 
 The WHOIS service in not optimal for structured querying, both due to the lack of structure in the protocol specification and due to the constraints on the public service offered by DK Hostmaster. If you are a registrar, you might be interested in [the DK Hostmaster Domain Availability Service (DAS)](https://github.com/DK-Hostmaster/das-service-specification) as an alternative.
 
+<a id="about-this-document"></a>
 ## About this Document
 
 This specification describes version 3 (3.X.X) of the DK Hostmaster WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
@@ -57,10 +59,12 @@ Any future extensions and possible additions and changes to the implementation a
 
 Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/whois-service-specification/blob/master/README.md), using the **gitprint** service.
 
+<a id="license"></a>
 ### License
 
 This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
+<a id="document-history"></a>
 ### Document History
 
 - 2.0 2019-04-30
@@ -71,12 +75,14 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 - 1.0 2016-04-27
   - Initial revision
 
+<a id="the-dk-registry-in-brief"></a>
 ## The .dk Registry in Brief
 
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
 
 The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS standard (see also [RFC:3912]).
 
+<a id="features"></a>
 ## Features
 
 The service implements the following features.
@@ -87,10 +93,12 @@ The service implements the following features.
 - Support for multiple encodings (see: Encodings below)
 - Support for both IPv4 and IPv6
 
+<a id="implementation-limitations"></a>
 ## Implementation Limitations
 
 In general the service is not localized and all WHOIS information is provided in English.
 
+<a id="encoding"></a>
 ### Encoding
 
 The service supports the following encodings:
@@ -101,6 +109,7 @@ The service supports the following encodings:
 
 Please see the section on service for more information on how to utilize this.
 
+<a id="rate-limiting"></a>
 ### Rate Limiting
 
 We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service.
@@ -111,12 +120,15 @@ In addition the service only allow 1 TCP-connection per. (IPv4)/24.
 
 Meaning that `192.0.2.41` and `192.0.2.52` can not have simultaneous connections, but `192.0.2.41` and `192.0.3.52` can.
 
+<a id="service"></a>
 ## Service
 
+<a id="domain-name-query"></a>
 ### Domain name query
 
 This is an example of a standard inquiry for a domain name
 
+<a id="example-query-for-domain-name-information"></a>
 #### Example query for domain name information
 
 ##### Request
@@ -226,6 +238,7 @@ Then we get to the data.
 | ´Status´ | Status of the domain name: 'A' for active, 'S' marked for deletion and 'H' on hold if deletion date has been surpassed |
 | ´Nameservers´ | List of name servers, serving the inquired domain name |
 
+<a id="example-domain-name-query-using-punycode"></a>
 #### Example domain name query using punycode
 
 This is a way to inquire on IDNA domains using punycode.
@@ -255,6 +268,7 @@ Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
+<a id="example-domain-name-query-using-utf-8"></a>
 #### Example domain name query using UTF-8
 
 The WHOIS service supports responding in UTF-8 by request as opposed to the default of [ISO-8859-1].
@@ -283,6 +297,7 @@ Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
+<a id="example-domain-name-query-with-domain-marked-for-deletion"></a>
 #### Example domain name query with domain marked for deletion
 
 If a domain name is marked for deletion prior to the expiration date a deletion date is calculated.
@@ -312,6 +327,7 @@ Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
+<a id="example-domain-name-query-including-handles"></a>
 #### Example domain name query including handles
 
 DK Hostmaster's WHOIS support listing handles associated with a given domain.
@@ -347,6 +363,7 @@ Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
+<a id="example-domain-name-query-extracting-anonymous-handles"></a>
 #### Example domain name query extracting anonymous handles
 
 If you make a inquiry asking for handle information and the users are marked anonymous in the WHOIS service: `***N/A***` is returned.
@@ -377,10 +394,12 @@ Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
 
+<a id="host-name-query"></a>
 ### Host name query
 
 You can inquire name server hosts.
 
+<a id="example-query-for-host-information"></a>
 #### Example query for host information
 
 ##### Request
@@ -407,10 +426,12 @@ The above example is relevant for name server hosts not ending in `.dk`, since D
 
 Do note that the host (name server) no longer supports disclosing name server administrators as part of the response.
 
+<a id="handle-inquiry"></a>
 ### Handle inquiry
 
 In addition to domain and hostname inquiries, you can inquire handles (contact-ids).
 
+<a id="example-query-for-public-handle"></a>
 #### Example query for public handle
 
 ##### Request
@@ -452,6 +473,7 @@ For Denmark the local representation is chosen and the international representat
 
 Please refer to [the EPP Service specification](https://github.com/DK-Hostmaster/epp-service-specification#create-contact) for more information on creation of contact objects in the DK Hostmaster system.
 
+<a id="example-query-for-public-handle-using-utf-8"></a>
 #### Example query for public handle using UTF-8
 
 As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--charset` parameter.
@@ -473,6 +495,7 @@ City:                 København S
 Country:              DK
 ```
 
+<a id="example-query-for-anonymous-handle"></a>
 #### Example query for anonymous handle
 
 ##### Request
@@ -489,16 +512,19 @@ Please note the `-c` flag for specifying country code, this is parameter is spec
 Handle:               ***N/A***
 ```
 
+<a id="additional-help"></a>
 ### Additional Help
 
 Additional help can be obtained on the command line using the following command:
 
+<a id="request"></a>
 #### Request
 
 ```bash
 $ whois -h whois.dk-hostmaster.dk HELP
 ```
 
+<a id="response"></a>
 #### Response
 
 ```bash
@@ -521,6 +547,7 @@ $ whois -h whois.dk-hostmaster.dk HELP
 ##   Note the additional space after the first quote.
 ```
 
+<a id="references"></a>
 ## References
 
 Here is a list of documents and references used in this document
@@ -533,22 +560,26 @@ Here is a list of documents and references used in this document
 - ISO-3166-1: Alpha-2. two-letter country code: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 - ISO-8859-1: 8-bit single-byte coded graphic character sets: https://en.wikipedia.org/wiki/ISO/IEC_8859-1
 
+<a id="resources"></a>
 ## Resources
 
 Resources for DK Hostmaster WHOIS support can be found below.
 
+<a id="mailing-list"></a>
 ### Mailing list
 
 DK Hostmaster operates a mailing list for discussion and inquiries  about the DK Hostmaster WHOIS service. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
 
 - `tech-discuss+subscribe@liste.dk-hostmaster.dk`
 
+<a id="issue-reporting"></a>
 ### Issue Reporting
 
 For issue reporting related to this specification, the WHOIS implementation or the production environment, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise use the address specified below:
 
 - `info@dk-hostmaster.dk`
 
+<a id="additional-information"></a>
 ### Additional Information
 
 The DK Hostmaster website service page
