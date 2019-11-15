@@ -2,6 +2,8 @@
 
 # DK Hostmaster WHOIS Service Specification
 
+![GitHub Workflow build status badge markdownlint](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Workflow/badge.svg)
+
 2019-04-30
 Revision: 2.0
 
