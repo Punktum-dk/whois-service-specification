@@ -4,8 +4,8 @@
 
 ![GitHub Workflow build status badge markdownlint](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Workflow/badge.svg)
 
-2019-04-30
-Revision: 2.0
+2019-11-25
+Revision: 3.0
 
 ## Table of Contents
 
@@ -18,6 +18,7 @@ Revision: 2.0
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [Features](#features)
 - [Implementation Limitations](#implementation-limitations)
+  - [Handle Inquiry](#handle-inquiry-limitation)
   - [Encoding](#encoding)
   - [Rate Limiting](#rate-limiting)
 - [Service](#service)
@@ -26,14 +27,10 @@ Revision: 2.0
     - [Example domain name query using punycode](#example-domain-name-query-using-punycode)
     - [Example domain name query using UTF-8](#example-domain-name-query-using-utf-8)
     - [Example domain name query with domain marked for deletion](#example-domain-name-query-with-domain-marked-for-deletion)
-    - [Example domain name query including handles](#example-domain-name-query-including-handles)
-    - [Example domain name query extracting anonymous handles](#example-domain-name-query-extracting-anonymous-handles)
+    - [Example domain name query including registrant](#example-domain-name-query-including-registrant)
   - [Host name query](#host-name-query)
     - [Example query for host information](#example-query-for-host-information)
   - [Handle inquiry](#handle-inquiry)
-    - [Example query for public handle](#example-query-for-public-handle)
-    - [Example query for public handle using UTF-8](#example-query-for-public-handle-using-utf-8)
-    - [Example query for anonymous handle](#example-query-for-anonymous-handle)
   - [Additional Help](#additional-help)
     - [Request](#request)
     - [Response](#response)
@@ -55,7 +52,7 @@ The WHOIS service in not optimal for structured querying, both due to the lack o
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes version 3 (3.X.X) of the DK Hostmaster WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
+This specification describes version 4 (4.X.X) of the DK Hostmaster WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
 The document describes the current DK Hostmaster WHOIS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
@@ -68,6 +65,11 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 3.0 2019-11-25
+  - Major update based on the changes with major release 4.0.0 of the WHOIS service
+  - Documenting removal of information on registrant users for domain name inquiries
+  - Documenting deprecation of support for handles inquiries
 
 - 2.0 2019-04-30
   - Major update based on the changes with major release 3.0.0 of the WHOIS service
@@ -89,9 +91,8 @@ The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS stand
 
 The service implements the following features.
 
-- Domain name inquiry can be extended with information on registrants
+- Domain name inquiry
 - Host name inquiry
-- Handle inquiry
 - Support for multiple encodings (see: Encodings below)
 - Support for both IPv4 and IPv6
 
@@ -99,6 +100,11 @@ The service implements the following features.
 ## Implementation Limitations
 
 In general the service is not localized and all WHOIS information is provided in English.
+
+<a id="handle-inquiry-limitation"></a>
+### Handle Inquiry
+
+As of service version 4 (4.X.X) DK Hostmaster does not support inquries for contact object handles/user-ids
 
 <a id="encoding"></a>
 ### Encoding
@@ -150,7 +156,7 @@ The standard response look as follows:
 #
 # Copyright (c) 2002 - 2019 by DK Hostmaster A/S
 #
-# Version: 3.0.0
+# Version: 4.0.0
 #
 # The data in the DK Whois database is provided by DK Hostmaster A/S
 # for information purposes only, and to assist persons in obtaining
@@ -192,7 +198,7 @@ The IP address has been masked for the example, As stated all request are logged
 Copyright notice.
 
 ```
-## Version: 3.0.0
+## Version: 4.0.0
 ```
 
 This is the version string of the service. The service uses [semantic versioning](semver.org), so this is major release `3`, No feature or bug releases has been made indicated by the minor release indicator: `0` and the patch release indicator:`0`.
@@ -353,43 +359,12 @@ Dnssec:               Signed delegation
 Status:               Active
 
 Registrant
-Handle:               DKHM1-DK
+Handle:               ***N/A***
 Name:                 DK HOSTMASTER A/S
 Address:              Kalvebod Brygge 45, 3.
 Postalcode:           1560
 City:                 København V
 Country:              DK
-
-Nameservers
-Hostname:             auth01.ns.dk-hostmaster.dk
-Hostname:             auth02.ns.dk-hostmaster.dk
-```
-
-<a id="example-domain-name-query-extracting-anonymous-handles"></a>
-#### Example domain name query extracting anonymous handles
-
-If you make a inquiry asking for handle information and the users are marked anonymous in the WHOIS service: `***N/A***` is returned.
-
-##### Request
-
-```bash
-$ whois ' --show-handles eksempel.dk'
-```
-
-##### Response
-
-```bash
-Domain:               eksempel.dk
-DNS:                  eksempel.dk
-Registered:           1999-05-17
-Expires:              2022-06-30
-Registration period:  5 years
-VID:                  yes
-Dnssec:               Signed delegation
-Status:               Active
-
-Registrant
-Handle:               ***N/A***
 
 Nameservers
 Hostname:             auth01.ns.dk-hostmaster.dk
@@ -431,88 +406,7 @@ Do note that the host (name server) no longer supports disclosing name server ad
 <a id="handle-inquiry"></a>
 ### Handle inquiry
 
-In addition to domain and hostname inquiries, you can inquire handles (contact-ids).
-
-<a id="example-query-for-public-handle"></a>
-#### Example query for public handle
-
-##### Request
-
-```bash
-$ whois -c dk DKHM1-DK
-```
-
-Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
-
-##### Response
-
-```
-Handle:               DKHM1-DK
-Name:                 DK HOSTMASTER A/S
-Address:              Ørestads Boulevard 108, 11.
-Postalcode:           2300
-City:                 København S
-Country:              DK
-```
-
-| Field | Description |
-| ----- | ----------- |
-| Handle | The handle, should match the one enquired about |
-| Name | Name associated with the entity referenced by the above handle |
-| Address | Address associated with the entity referenced by the above handle |
-| Postalcode | Postal code associated with the above address |
-| City | Postal code associated with the above address |
-| Country | 2-letter country code associated with the above address, specified in [ISO-3166-1] alpha-2 format |
-
-Please note that due to the representation in DK Hostmaster's system for handling contacts the following rules are applied to postal information.
-
-For Denmark the local representation is chosen and the international representation is discarded. For other countries the international representation is chosen and the local representation is discarded. Please see the table below.
-
-| Denmark | Other country |
-| ----------- | ----------- |
-| **Local representation** | Local representation |
-| International representation | **International representation** |
-
-Please refer to [the EPP Service specification](https://github.com/DK-Hostmaster/epp-service-specification#create-contact) for more information on creation of contact objects in the DK Hostmaster system.
-
-<a id="example-query-for-public-handle-using-utf-8"></a>
-#### Example query for public handle using UTF-8
-
-As described earlier [ISO-8859-1] is the default encoding, so in order to retrieve information encoded as UTF-8, you have to use the `--charset` parameter.
-
-##### Request
-
-```bash
-$ whois -c dk " --charset=utf8 DKHM1-DK"
-```
-
-Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
-
-```
-Handle:               DKHM1-DK
-Name:                 DK HOSTMASTER A/S
-Address:              Ørestads Boulevard 108, 11.
-Postalcode:           2300
-City:                 København S
-Country:              DK
-```
-
-<a id="example-query-for-anonymous-handle"></a>
-#### Example query for anonymous handle
-
-##### Request
-
-```bash
-$ whois -c dk ANON-DK
-```
-
-Please note the `-c` flag for specifying country code, this is parameter is specific to your `whois` and might vary.
-
-##### Response
-
-```
-Handle:               ***N/A***
-```
+As described under Implementation Limitations, DK Hostmaster does not support queries on handles.
 
 <a id="additional-help"></a>
 ### Additional Help
