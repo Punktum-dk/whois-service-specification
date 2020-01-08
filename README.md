@@ -4,8 +4,8 @@
 
 ![GitHub Workflow build status badge markdownlint](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Workflow/badge.svg)
 
-2019-11-25
-Revision: 3.0
+2020-01-08
+Revision: 3.1
 
 ## Table of Contents
 
@@ -58,6 +58,10 @@ Any future extensions and possible additions and changes to the implementation a
 
 Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/whois-service-specification/blob/master/README.md), using the **gitprint** service.
 
+:warning: DK Hostmaster specific features might not be supported by specific clients and operating systems.
+
+Do note all command lines examples were created on MacOS version 10.11 using the `whois` command line client shipped with this version, updates to this client and operating system are not automatically reflected in the specification under the clause stated above.
+
 <a id="license"></a>
 ### License
 
@@ -65,6 +69,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 3.1 2020-01-08
+  - Added clause for examples and corrected and extended some of the examples
 
 - 3.0 2019-11-25
   - Major update based on the changes with major release 4.0.0 of the WHOIS service
@@ -236,15 +243,15 @@ Then we get to the data.
 
 | Field | Description |
 | ----- | ----------- |
-| ´Domain´ | The domain name, should match the one enquired about |
-| ´DNS´ | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891] |
-| ´Registered´ | Date of registration [ISO-8601] |
-| ´Expires´ | Date of expiration [ISO-8601] |
-| ´Registration period´ | Registration period (`1`, `2`, `3` or `5` years) |
-| ´VID´ | Indication whether VID service is active, values either `yes` or `no` |
-| ´Dnssec´ | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation` |
-| ´Status´ | Status of the domain name: 'A' for active, 'S' marked for deletion and 'H' on hold if deletion date has been surpassed |
-| ´Nameservers´ | List of name servers, serving the inquired domain name |
+| `Domain` | The domain name, should match the one enquired about |
+| `DNS` | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891] |
+| `Registered` | Date of registration [ISO-8601] |
+| `Expires` | Date of expiration [ISO-8601] |
+| `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
+| `VID` | Indication whether VID service is active, values either `yes` or `no` |
+| `Dnssec` | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation` |
+| `Status` | Status of the domain name: 'A' for active, 'S' marked for deletion and 'H' on hold if deletion date has been surpassed |
+| `Nameservers` | List of name servers, serving the inquired domain name |
 
 <a id="example-domain-name-query-using-punycode"></a>
 #### Example domain name query using punycode
@@ -284,7 +291,7 @@ The WHOIS service supports responding in UTF-8 by request as opposed to the defa
 ##### Request
 
 ```bash
-$ whois " --charset=utf8 æøåöäüé.dk"
+$ whois -c dk " --charset=utf8 æøåöäüé.dk"
 ```
 
 ##### Response
@@ -343,7 +350,7 @@ DK Hostmaster's WHOIS support listing handles associated with a given domain.
 ##### Request
 
 ```bash
-$ whois ' --show-handles eksempel.dk'
+$ whois -c dk ' --show-handles eksempel.dk'
 ```
 
 ##### Response
