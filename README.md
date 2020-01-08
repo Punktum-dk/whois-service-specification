@@ -4,8 +4,8 @@
 
 ![GitHub Workflow build status badge markdownlint](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Workflow/badge.svg)
 
-2019-11-25
-Revision: 3.0
+2020-01-08
+Revision: 3.1
 
 ## Table of Contents
 
@@ -69,6 +69,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 3.1 2020-01-08
+  - Added clause for examples and corrected and extended some of the examples
 
 - 3.0 2019-11-25
   - Major update based on the changes with major release 4.0.0 of the WHOIS service
