@@ -4,8 +4,8 @@
 
 ![GitHub Workflow build status badge markdownlint](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Workflow/badge.svg)
 
-2020-01-08
-Revision: 3.1
+2020-01-21
+Revision: 3.2
 
 ## Table of Contents
 
@@ -69,6 +69,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 3.2 2020-01-21
+  - Documenting added DNSSEC status values
 
 - 3.1 2020-01-08
   - Added clause for examples and corrected and extended some of the examples
@@ -181,7 +184,7 @@ Registered:           1999-05-17
 Expires:              2022-06-30
 Registration period:  5 years
 VID:                  yes
-Dnssec:               Signed delegation
+DNSSEC:               Signed delegation
 Status:               Active
 
 Nameservers
@@ -231,7 +234,7 @@ Registered:           1999-05-17
 Expires:              2022-06-30
 Registration period:  5 years
 VID:                  yes
-Dnssec:               Signed delegation
+DNSSEC:               Signed delegation
 Status:               Active
 
 Nameservers
@@ -249,7 +252,7 @@ Then we get to the data.
 | `Expires` | Date of expiration [ISO-8601] |
 | `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
 | `VID` | Indication whether VID service is active, values either `yes` or `no` |
-| `Dnssec` | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation` |
+| `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation`, `Unsigned delegation, DNSSEC disabled, no records`, `Unsigned delegation, DNSSEC disabled, keys unpublished`, `Unsigned delegation, DNSSEC disabled`, `Unsigned delegation, no records`, `Unsigned delegation, DNSSEC enabled, keys unpublished` or `Unknown status` |
 | `Status` | Status of the domain name: 'A' for active, 'S' marked for deletion and 'H' on hold if deletion date has been surpassed |
 | `Nameservers` | List of name servers, serving the inquired domain name |
 
@@ -275,7 +278,7 @@ Registered:           2010-06-14
 Expires:              2019-06-30
 Registration period:  1 year
 VID:                  no
-Dnssec:               Unsigned delegation
+DNSSEC:               Unsigned delegation, no records
 Status:               Active
 
 Nameservers
@@ -304,7 +307,7 @@ Expires:              2019-06-30
 Delete date:          2019-07-14`
 Registration period:  1 year
 VID:                  no
-Dnssec:               Unsigned delegation
+DNSSEC:               Unsigned delegation, no records
 Status:               Active
 
 Nameservers
@@ -334,7 +337,7 @@ Registered:           1999-05-17
 Expires:              2022-06-30
 Registration period:  5 years
 VID:                  yes
-Dnssec:               Signed delegation
+DNSSEC:               Signed delegation
 Status:               Active
 
 Nameservers
@@ -362,7 +365,7 @@ Registered:           1999-05-17
 Expires:              2022-06-30
 Registration period:  5 years
 VID:                  yes
-Dnssec:               Signed delegation
+DNSSEC:               Signed delegation
 Status:               Active
 
 Registrant
