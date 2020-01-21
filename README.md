@@ -304,7 +304,7 @@ Domain:               æøåöäüé.dk
 DNS:                  xn--4cabco7dk5a.dk
 Registered:           2010-06-14
 Expires:              2019-06-30
-Delete date:          2019-07-14`
+Delete date:          2019-07-14
 Registration period:  1 year
 VID:                  no
 DNSSEC:               Unsigned delegation, no records
