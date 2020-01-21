@@ -250,10 +250,11 @@ Then we get to the data.
 | `DNS` | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891] |
 | `Registered` | Date of registration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark |
 | `Expires` | Date of expiration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark |
+| `Delete date` | Date indicating deletion in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark. Do note this field is only available if is has been set |
 | `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
 | `VID` | Indication whether VID service is active, values either `yes` or `no` |
 | `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation`, `Unsigned delegation, DNSSEC disabled, no records`, `Unsigned delegation, DNSSEC disabled, keys unpublished`, `Unsigned delegation, DNSSEC disabled`, `Unsigned delegation, no records`, `Unsigned delegation, DNSSEC enabled, keys unpublished` or `Unknown status` |
-| `Status` | Status of the domain name: `A` for active, `S` marked for deletion and `H` on hold if deletion date has been surpassed |
+| `Status` | Status of the domain name: `A` for active, `S` marked for deletion and `H` on hold if available `Delete date` has been surpassed. `H` is also be used for other internal status resulting in a domainname not being made available in the zone |
 | `Nameservers` | List of name servers, serving the inquired domain name |
 
 <a id="example-domain-name-query-using-punycode"></a>
