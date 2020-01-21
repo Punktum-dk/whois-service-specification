@@ -253,7 +253,7 @@ Then we get to the data.
 | `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
 | `VID` | Indication whether VID service is active, values either `yes` or `no` |
 | `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation`, `Unsigned delegation, DNSSEC disabled, no records`, `Unsigned delegation, DNSSEC disabled, keys unpublished`, `Unsigned delegation, DNSSEC disabled`, `Unsigned delegation, no records`, `Unsigned delegation, DNSSEC enabled, keys unpublished` or `Unknown status` |
-| `Status` | Status of the domain name: 'A' for active, 'S' marked for deletion and 'H' on hold if deletion date has been surpassed |
+| `Status` | Status of the domain name: `A` for active, `S` marked for deletion and `H` on hold if deletion date has been surpassed |
 | `Nameservers` | List of name servers, serving the inquired domain name |
 
 <a id="example-domain-name-query-using-punycode"></a>
