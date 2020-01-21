@@ -71,7 +71,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 ### Document History
 
 - 3.2 2020-01-21
-  - Documenting added DNSSEC status values
+  - Documenting added DNSSEC status values, introduced in release 4.0.2 of the WHOIS service
 
 - 3.1 2020-01-08
   - Added clause for examples and corrected and extended some of the examples
