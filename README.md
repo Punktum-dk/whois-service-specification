@@ -309,7 +309,6 @@ Domain:               æøåöäüé.dk
 DNS:                  xn--4cabco7dk5a.dk
 Registered:           2010-06-14
 Expires:              2019-06-30
-Delete date:          2019-07-14
 Registration period:  1 year
 VID:                  no
 DNSSEC:               Unsigned delegation, no records
@@ -340,6 +339,7 @@ Domain:               eksempel.dk
 DNS:                  eksempel.dk
 Registered:           1999-05-17
 Expires:              2022-06-30
+Delete date:          2021-12-31
 Registration period:  5 years
 VID:                  yes
 DNSSEC:               Signed delegation
