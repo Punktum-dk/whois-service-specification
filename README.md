@@ -17,6 +17,7 @@ Revision: 3.3
   - [License](#license)
   - [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
+- [Registrar Collaboration Model](#registrar-collaboration-model)
 - [Features](#features)
 - [Implementation Limitations](#implementation-limitations)
   - [Handle Inquiry](#handle-inquiry-limitation)
@@ -71,6 +72,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ### Document History
 
+- 4.0 2021-01-05
+  - Documenting added registrar information, introduced in release 5.0.0 of the WHOIS service
+
 - 3.3 2020-01-21
   - Added a few clarifications and corrected some bad formatting
 
@@ -99,6 +103,22 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
 
 The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS standard (see also [RFC:3912]).
+
+<a id="registrar-collaboration-model"></a>
+## Registrar Collaboration Model
+
+The registrar collaboration model allows registrars to fully handle administration of domain names.
+
+DK Hostmaster offers two models of administration:
+
+- "Registrar Management"
+- "Registrant Management"
+
+The WHOIS will indicate choice of administrative model for a given domain name, by displaying a `Registrar` field, pointing to the name of the registrar.
+
+If this field is omitted the domain name is under registrant management.
+
+You can find more information on [the two different models]([models]) on the DK Hostmaster website, together with more information on [the concept behind the registrar model][concept].
 
 <a id="features"></a>
 ## Features
@@ -168,9 +188,9 @@ The standard response look as follows:
 ```bash
 # Hello XX.XX.XX.XX. Your session has been logged.
 #
-# Copyright (c) 2002 - 2019 by DK Hostmaster A/S
+# Copyright (c) 2002 - 2021 by DK Hostmaster A/S
 #
-# Version: 4.0.0
+# Version: 5.0.0
 #
 # The data in the DK Whois database is provided by DK Hostmaster A/S
 # for information purposes only, and to assist persons in obtaining
@@ -206,13 +226,13 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 The IP address has been masked for the example, As stated all request are logged.
 
 ```
-## Copyright (c) 2002 - 2019 by DK Hostmaster A/S
+## Copyright (c) 2002 - 2021 by DK Hostmaster A/S
 ```
 
 Copyright notice.
 
 ```
-## Version: 4.0.0
+## Version: 5.0.0
 ```
 
 This is the version string of the service. The service uses [semantic versioning](semver.org), so this is major release `3`, No feature or bug releases has been made indicated by the minor release indicator: `0` and the patch release indicator:`0`.
@@ -236,6 +256,7 @@ Domain:               eksempel.dk
 DNS:                  eksempel.dk
 Registered:           1999-05-17
 Expires:              2022-06-30
+Registrar:            All Things DK Domains
 Registration period:  5 years
 VID:                  yes
 DNSSEC:               Signed delegation
@@ -254,6 +275,7 @@ Then we get to the data.
 | `DNS` | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891] |
 | `Registered` | Date of registration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark |
 | `Expires` | Date of expiration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark |
+| `Registrar` | This field is available if the inquired domain name is handled by a registrar, the field is omitted if the domain name is registrant handled, for more information see the chapter on "Registrar Collaboration Model" |
 | `Delete date` | Date indicating deletion in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark. Do note this field is only available if is has been set |
 | `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
 | `VID` | Indication whether VID service is active, values either `yes` or `no` |
@@ -498,11 +520,9 @@ The DK Hostmaster website service page
 - `https://www.dk-hostmaster.dk/en/whois`
 
 [RFC:5891]: https://tools.ietf.org/html/rfc5891
-
 [RFC:3912]: https://tools.ietf.org/html/rfc3912
-
 [ISO-8601]: https://en.wikipedia.org/wiki/ISO_8601
-
 [ISO-3166-1]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-
 [ISO-8859-1]: https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+[concept]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
+[models]: https://www.dk-hostmaster.dk/en/node/819
