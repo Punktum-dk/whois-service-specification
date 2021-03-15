@@ -72,7 +72,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 ### Document History
 
 - 3.4 2021-03-15
-  - Added appendix on status values and clarified the explanation on status
+  - Added appendix on status values and corrected the explanation on status
   - Updated examples so the dates are contemporary (for now)
   - Updated links to resources, quite a few did not longer work
   - Link to GitPrint removed
