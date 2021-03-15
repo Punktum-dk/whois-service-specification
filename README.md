@@ -510,7 +510,7 @@ The DK Hostmaster website service page
 
 | Status                | Description                                                                        |
 | --------------------- | ---------------------------------------------------------------------------------- |
-| `Active`              | Domain name is or being published to the z                                         |
+| `Active`              | Domain name is or being published to the zone                                      |
 | `Deactivated`         | Domain name is not being published to the zone                                     |
 | `Reserved`            | Domain name is not being published to the zone (activation required by registrant) |
 
