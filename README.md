@@ -28,7 +28,8 @@ Revision: 3.4
     - [Example domain name query using punycode](#example-domain-name-query-using-punycode)
     - [Example domain name query using UTF-8](#example-domain-name-query-using-utf-8)
     - [Example domain name query with domain marked for deletion](#example-domain-name-query-with-domain-marked-for-deletion)
-    - [Example domain name query including registrant](#example-domain-name-query-including-registrant)
+    - [Example domain name query including handles](#example-domain-name-query-including-handles)
+    - [Example domain name query for domain name offered to waiting list](#example-domain-name-query-for-domain-offered-to-waiting-list)
   - [Host name query](#host-name-query)
     - [Example query for host information](#example-query-for-host-information)
   - [Handle inquiry](#handle-inquiry)
@@ -390,6 +391,41 @@ Nameservers
 Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
 ```
+
+<a id="example-domain-name-query-for-domain-name-offered-to-waiting-list"></a>
+#### Example domain name query for domain name offered to waiting list
+
+DK Hostmaster's WHOIS support listing can provide information, limited though, for domain names offered from a waiting list.
+
+##### Request
+
+The query resembles a standard query for a domain name, but the response differs.
+
+```bash
+$ whois -c dk eksempel.dk
+```
+
+##### Response
+
+```bash
+Domain:               eksempel.dk
+DNS:                  eksempel.dk
+Registered:           ***N/A***
+Expires:              ***N/A***
+Registration period:  ***N/A***
+VID:                  ***N/A***
+DNSSEC:               ***N/A***
+Status:               Offered to waiting list
+```
+
+As can be read from the response.
+
+1. The domain name is not regsitered: `Registered:           ***N/A***`
+1. The domain name does not have expiration data: `Expires:              ***N/A***`, the waiting list expiration is not included in the public data. An waiting list offering expires after 14 days
+1. Since to registration is active, there is not period associated: `Registration period:  ***N/A***`
+1. VID is not available: `VID:                  ***N/A***`
+1. DNSSEC is not available: `DNSSEC:               ***N/A***`
+1. Status is offered to waiting list, indicating that the domain name has been offered to the first position on the waiting list
 
 <a id="host-name-query"></a>
 ### Host name query
