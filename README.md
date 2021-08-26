@@ -420,7 +420,7 @@ Status:               Offered to waiting list
 
 As can be read from the response.
 
-1. The domain name is not regsitered: `Registered:           ***N/A***`
+1. The domain name is not registered: `Registered:           ***N/A***`
 1. The domain name does not have expiration data: `Expires:              ***N/A***`, the waiting list expiration is not included in the public data. An waiting list offering expires after 14 days
 1. Since to registration is active, there is not period associated: `Registration period:  ***N/A***`
 1. VID is not available: `VID:                  ***N/A***`
