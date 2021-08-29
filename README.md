@@ -5,8 +5,8 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
-2020-01-21
-Revision: 3.3
+2021-03-15
+Revision: 3.4
 
 ## Table of Contents
 
@@ -41,6 +41,8 @@ Revision: 3.3
   - [Mailing list](#mailing-list)
   - [Issue Reporting](#issue-reporting)
   - [Additional Information](#additional-information)
+- [Appendices](#appendices)
+  - [Domain Status Values](#domain_status_values)
 
 <!-- /MarkdownTOC -->
 
@@ -49,7 +51,7 @@ Revision: 3.3
 
 This document describes and specifies the implementation offered by DK Hostmaster A/S for interaction with the central registry for the ccTLD dk using the WHOIS Service. It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of the WHOIS protocol and possibly DNS registration.
 
-The WHOIS service in not optimal for structured querying, both due to the lack of structure in the protocol specification and due to the constraints on the public service offered by DK Hostmaster. If you are a registrar, you might be interested in [the DK Hostmaster Domain Availability Service (DAS)](https://github.com/DK-Hostmaster/das-service-specification) as an alternative.
+The WHOIS service in not optimal for structured querying, both due to the lack of structure in the protocol specification and due to the constraints on the public service offered by DK Hostmaster. If you are a registrar, you might be interested in [the DK Hostmaster Domain Availability Service (DAS)][DKHMDAS] as an alternative.
 
 <a id="about-this-document"></a>
 ## About this Document
@@ -58,9 +60,7 @@ This specification describes version 4 (4.X.X) of the DK Hostmaster WHOIS Implem
 The document describes the current DK Hostmaster WHOIS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
-Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/whois-service-specification/blob/master/README.md), using the **gitprint** service.
-
-:warning: DK Hostmaster specific features might not be supported by specific clients and operating systems.
+:warning: DK Hostmaster specific features might not be supported by all clients and operating systems.
 
 Do note all command lines examples were created on MacOS version 10.11 using the `whois` command line client shipped with this version, updates to this client and operating system are not automatically reflected in the specification under the clause stated above.
 
@@ -74,6 +74,12 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 - 4.0 2021-01-05
   - Documenting added registrar information, introduced in release 5.0.0 of the WHOIS service
+
+- 3.4 2021-03-15
+  - Added appendix on status values and corrected the explanation on status
+  - Updated examples so the dates are contemporary (for now)
+  - Updated links to resources, quite a few did not longer work
+  - Link to GitPrint removed
 
 - 3.3 2020-01-21
   - Added a few clarifications and corrected some bad formatting
@@ -235,7 +241,7 @@ Copyright notice.
 ## Version: 5.0.0
 ```
 
-This is the version string of the service. The service uses [semantic versioning](semver.org), so this is major release `3`, No feature or bug releases has been made indicated by the minor release indicator: `0` and the patch release indicator:`0`.
+This is the version string of the service. The service uses [semantic versioning][SEMVER], so this is major release `3`, No feature or bug releases has been made indicated by the minor release indicator: `0` and the patch release indicator:`0`.
 
 ```
 ## The data in the DK Whois database is provided by DK Hostmaster A/S
@@ -280,7 +286,7 @@ Then we get to the data.
 | `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
 | `VID` | Indication whether VID service is active, values either `yes` or `no` |
 | `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation`, `Unsigned delegation, DNSSEC disabled, no records`, `Unsigned delegation, DNSSEC disabled, keys unpublished`, `Unsigned delegation, DNSSEC disabled`, `Unsigned delegation, no records`, `Unsigned delegation, DNSSEC enabled, keys unpublished` or `Unknown status` |
-| `Status` | Status of the domain name: `A` for active, `S` marked for deletion and `H` on hold if available `Delete date` has been surpassed. `H` is also be used for other internal status resulting in a domainname not being made available in the zone |
+| `Status` | Status of the domain name, please see the appendix |
 | `Nameservers` | List of name servers, serving the inquired domain name |
 
 <a id="example-domain-name-query-using-punycode"></a>
@@ -361,7 +367,6 @@ Domain:               eksempel.dk
 DNS:                  eksempel.dk
 Registered:           1999-05-17
 Expires:              2022-06-30
-Delete date:          2021-12-31
 Registration period:  5 years
 VID:                  yes
 DNSSEC:               Signed delegation
@@ -398,9 +403,9 @@ Status:               Active
 Registrant
 Handle:               ***N/A***
 Name:                 DK HOSTMASTER A/S
-Address:              Kalvebod Brygge 45, 3.
-Postalcode:           1560
-City:                 København V
+Address:              Ørestads Boulevard 108, 11.
+Postalcode:           2300
+City:                 København S
 Country:              DK
 
 Nameservers
@@ -485,13 +490,13 @@ $ whois -h whois.dk-hostmaster.dk HELP
 
 Here is a list of documents and references used in this document
 
-- General Terms and Conditions: https://www.dk-hostmaster.dk/fileadmin/filer/pdf/generelle_vilkaar/general-conditions.pdf
-- RFC:5891 Internationalized Domain Names in Applications (IDNA): Protocol: https://tools.ietf.org/html/rfc5891
-- RFC:3912 WHOIS Protocol Specification: https://tools.ietf.org/html/rfc3912
-- Documentation on the format of a domain name with the DK Hostmaster A/S registry: https://www.dk-hostmaster.dk/english/technical-administration/forms/register-domainname/
-- ISO-8601: International date format: https://en.wikipedia.org/wiki/ISO_8601
-- ISO-3166-1: Alpha-2. two-letter country code: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-- ISO-8859-1: 8-bit single-byte coded graphic character sets: https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+1. [DK Hostmaster General Terms and Conditions][DKHMTAC]
+1. [DK Hostmaster Name Service Specification][DKHMNS]
+1. [RFC:3912 WHOIS Protocol Specification][RFC:3912]
+1. [RFC:5891 Internationalized Domain Names in Applications (IDNA): Protocol][RFC:5891]
+1. [ISO-3166-1: Alpha-2. two-letter country code][ISO.3166-1]
+1. [ISO-8601: International date format][ISO-8601]
+1. [ISO-8859-1: 8-bit single-byte coded graphic character sets][ISO-8859-1]
 
 <a id="resources"></a>
 ## Resources
@@ -508,9 +513,7 @@ DK Hostmaster operates a mailing list for discussion and inquiries  about the DK
 <a id="issue-reporting"></a>
 ### Issue Reporting
 
-For issue reporting related to this specification, the WHOIS implementation or the production environment, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise use the address specified below:
-
-- `info@dk-hostmaster.dk`
+For issue reporting related to this specification, the WHOIS implementation or the production environment, please contact us. You are of course welcome to post these to the mailing list mentioned above, otherwise use the regular support channels.
 
 <a id="additional-information"></a>
 ### Additional Information
@@ -519,10 +522,26 @@ The DK Hostmaster website service page
 
 - `https://www.dk-hostmaster.dk/en/whois`
 
-[RFC:5891]: https://tools.ietf.org/html/rfc5891
+<a id="appendices"></a>
+## Appendices
+
+<a id="domain_status_values"></a>
+### Domain Status Values
+
+| Status                | Description                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------- |
+| `Active`              | Domain name is or being published to the zone                                      |
+| `Deactivated`         | Domain name is not being published to the zone                                     |
+| `Reserved`            | Domain name is not being published to the zone (activation required by registrant) |
+
+[DKHMTAC]: https://www.dk-hostmaster.dk/en/general-conditions
+[DKHMNS]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
+[DKHMDAS]: https://github.com/DK-Hostmaster/das-service-specification
 [RFC:3912]: https://tools.ietf.org/html/rfc3912
-[ISO-8601]: https://en.wikipedia.org/wiki/ISO_8601
+[RFC:5891]: https://tools.ietf.org/html/rfc5891
 [ISO-3166-1]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+[ISO-8601]: https://en.wikipedia.org/wiki/ISO_8601
 [ISO-8859-1]: https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+[SEMVER]: https://semver.org/
 [concept]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
 [models]: https://www.dk-hostmaster.dk/en/node/819
