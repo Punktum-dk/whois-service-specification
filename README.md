@@ -5,8 +5,8 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
-2021-03-15
-Revision: 3.4
+2021-09-02
+Revision: 4.0
 
 ## Table of Contents
 
@@ -57,7 +57,7 @@ The WHOIS service in not optimal for structured querying, both due to the lack o
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes version 4 (4.X.X) of the DK Hostmaster WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
+This specification describes version 5 (5.X.X) of the DK Hostmaster WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
 The document describes the current DK Hostmaster WHOIS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
@@ -73,8 +73,10 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ### Document History
 
-- 4.0 2021-01-05
-  - Documenting added registrar information, introduced in release 5.0.0 of the WHOIS service
+- 4.0 2021-09-02
+  - Added documentation on registrar information, introduced in release 5.0.0 of the WHOIS service
+  - Updated with information and example on domain names offered to waiting list position, introduced in release
+    5.0.0 of the WHOIS service
 
 - 3.4 2021-03-15
   - Added appendix on status values and corrected the explanation on status
@@ -417,11 +419,11 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 <a id="example-domain-name-query-for-domain-name-offered-to-waiting-list"></a>
 #### Example domain name query for domain name offered to waiting list
 
-DK Hostmaster's WHOIS support listing can provide information, limited though, for domain names offered from a waiting list.
+DK Hostmaster's WHOIS support listing can provide information, limited though, for domain names offered from to a waiting list position, this is for consistency with EPP, DAS and other services.
 
 ##### Request
 
-The query resembles a standard query for a domain name, but the response differs.
+The query resembles a standard query for a domain name, the response however differs.
 
 ```bash
 $ whois -c dk eksempel.dk
@@ -442,12 +444,12 @@ Status:               Offered to waiting list
 
 As can be read from the response.
 
-1. The domain name is not registered: `Registered:           ***N/A***`
-1. The domain name does not have expiration data: `Expires:              ***N/A***`, the waiting list expiration is not included in the public data. An waiting list offering expires after 14 days
-1. Since to registration is active, there is not period associated: `Registration period:  ***N/A***`
-1. VID is not available: `VID:                  ***N/A***`
-1. DNSSEC is not available: `DNSSEC:               ***N/A***`
-1. Status is offered to waiting list, indicating that the domain name has been offered to the first position on the waiting list
+1. The domain name is not registered: `Registered: ***N/A***`
+1. The domain name does not have expiration data: `Expires: ***N/A***`, the waiting list expiration is not included in the public data. An waiting list offering expires after 14 days
+1. Since to registration is active, there is not period associated: `Registration period: ***N/A***`
+1. VID is not available: `VID: ***N/A***`
+1. DNSSEC is not available: `DNSSEC: ***N/A***`
+1. Status is `Offered to waiting list`, indicating that the domain name has been offered to the first position on the waiting list
 
 <a id="host-name-query"></a>
 ### Host name query
