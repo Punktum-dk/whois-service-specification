@@ -5,8 +5,8 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
-2021-09-02
-Revision: 4.0
+2021-09-05
+Revision: 4.1
 
 ## Table of Contents
 
@@ -19,6 +19,9 @@ Revision: 4.0
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [Registrar Collaboration Model](#registrar-collaboration-model)
 - [Features](#features)
+- [Available Environments](#available-environments)
+  - [Production Environment](#production-environment)
+  - [Sandbox Environment](#sandbox-environment)
 - [Implementation Limitations](#implementation-limitations)
   - [Handle Inquiry](#handle-inquiry-limitation)
   - [Encoding](#encoding)
@@ -37,6 +40,7 @@ Revision: 4.0
   - [Additional Help](#additional-help)
     - [Request](#request)
     - [Response](#response)
+- [Test Data](#test-data)
 - [References](#references)
 - [Resources](#resources)
   - [Mailing list](#mailing-list)
@@ -72,6 +76,10 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 4.1 2021-09-05
+  - Improved descriptions on available environments and test data
+  - Added links to available resources in in sections, which would improve with these
 
 - 4.0 2021-09-02
   - Added documentation on registrar information, introduced in release 5.0.0 of the WHOIS service
@@ -139,6 +147,32 @@ The service implements the following features.
 - Support for multiple encodings (see: Encodings below)
 - Support for both IPv4 and IPv6
 
+<a id="available-environments"></a>
+## Available Environments
+
+DK Hostmaster offers the following environments:
+
+| Environment | Role | Policies |
+| ----------- | ---- | ----------- |
+| production  | production | This environment is the production environment for the DK Hostmaster WHOIS Service |
+| sandbox     | development | This environment is intended for client development towards the DK Hostmaster WHOIS Service |
+
+For information on what service and specification is applicable and available, consult the [DK Hostmaster WHOIS Service Wiki][WIKI]
+For use please see the section on [Test Data](#test-data).
+
+<a id="production-environment"></a>
+### Production Environment
+
+- requests made to this environment will reflect live production data
+
+Production is available at: `whois.dk-hostmaster.dk` port `43`
+
+<a id="sandbox-environment"></a>
+### Sandbox Environment
+
+- Queries made to this environment will reflect data only available in the isolated sandbox environment, please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details.
+- Please additional data please, see the section on [Test Data](#test-data).
+
 <a id="implementation-limitations"></a>
 ## Implementation Limitations
 
@@ -177,7 +211,9 @@ Meaning that `192.0.2.41` and `192.0.2.52` can not have simultaneous connections
 <a id="domain-name-query"></a>
 ### Domain name query
 
-This is an example of a standard inquiry for a domain name
+This is an example of a standard inquiry for a domain name.
+
+The constraints on a domain name in the .dk zone is described in the [DK Hostmaster Name Service Specification][DKHMNSDOM].
 
 <a id="example-query-for-domain-name-information"></a>
 #### Example query for domain name information
@@ -479,7 +515,9 @@ Nameserver:           auth02.ns.dk-hostmaster.dk
 Glue:                 Not being spooled
 ```
 
-The above example is relevant for name server hosts not ending in `.dk`, since DK Hostmaster require glue records for name servers ending in `.dk` and glue records are not required for name servers with hostnames hosted with other TLDs.
+The above examples are relevant for name server hosts ending in `.dk`, since DK Hostmaster require glue records for name servers ending in `.dk`, which serve there own zone. Glue records are not required for name servers with hostnames served by other TLDs.
+
+See the section on glue records in the [DK Hostmaster Name Service Specification][DKHMNSGLUE].
 
 Do note that the host (name server) no longer supports disclosing name server administrators as part of the response.
 
@@ -522,6 +560,60 @@ $ whois -h whois.dk-hostmaster.dk HELP
 ##     whois " --charset=latin-1 dk-hostmaster.dk"
 ##   Note the additional space after the first quote.
 ```
+
+<a id="test-data"></a>
+## Test Data
+
+The sandbox uses a combination of a predefined set of test data and data added to the sandbox environment by use.
+
+<a id="domains"></a>
+### Domains
+
+| Domain name | Status | Notes |
+|-------------|--------|-------|
+| `dk-hostmaster.dk` | `Active` | The domain is visible and active |
+| `æøåöäüé.dk` | `unavailable` | The domain is visible and active |
+| `waiting-list.dk` | `Offered to waiting list` | The domain status is awaiting the designated registrant |
+| * | * | Depending on what domains have been registered with the sandbox environment. Please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details. |
+
+<a id="waiting-list"></a>
+### Waiting List
+
+Since the `Offered to waiting list` is very transient, the domain name: `waiting-list.dk` simulates this state.
+
+The domain name can be queried via the WHOIS service in the sandbox environment:
+
+```bash
+whois -h whois-sandbox.dk-hostmaster.dk waiting-list.dk
+# Hello X.X.X.X. Your session has been logged.
+#
+# Copyright (c) 2002 - 2021 by DK Hostmaster A/S
+#
+# Version: 5.0.0
+#
+# The data in the DK Whois database is provided by DK Hostmaster A/S
+# for information purposes only, and to assist persons in obtaining
+# information about or related to a domain name registration record.
+# We do not guarantee its accuracy. We will reserve the right to remove
+# access for entities abusing the data, without notice.
+#
+# Any use of this material to target advertising or similar activities
+# are explicitly forbidden and will be prosecuted. DK Hostmaster A/S
+# requests to be notified of any such activities or suspicions thereof.
+
+Domain:               waiting-list.dk
+DNS:                  waiting-list.dk
+Registered:           ***N/A***
+Expires:              ***N/A***
+Registration period:  ***N/A***
+VID:                  ***N/A***
+DNSSEC:               ***N/A***
+Status:               Offered to waiting list
+```
+
+Do note this behaviour is reserved for the sandbox environment.
+
+For more details on the sandbox environment, please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification).
 
 <a id="references"></a>
 ## References
@@ -576,7 +668,9 @@ The DK Hostmaster website service page
 | `Offered to waiting list` | Domain name has been offered to a waiting list position (action pending registrant) |
 
 [DKHMTAC]: https://www.dk-hostmaster.dk/en/general-conditions
-[DKHMNS]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
+[DKHMNSDOM]: https://github.com/DK-Hostmaster/dkhm-name-service-specification
+[DKHMNSDOM]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
+[DKHMNSGLUE]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#glue-records
 [DKHMDAS]: https://github.com/DK-Hostmaster/das-service-specification
 [RFC:3912]: https://tools.ietf.org/html/rfc3912
 [RFC:5891]: https://tools.ietf.org/html/rfc5891
@@ -586,3 +680,4 @@ The DK Hostmaster website service page
 [SEMVER]: https://semver.org/
 [concept]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
 [models]: https://www.dk-hostmaster.dk/en/node/819
+[WIKI]: https://github.com/DK-Hostmaster/whois-service-specification/wiki
