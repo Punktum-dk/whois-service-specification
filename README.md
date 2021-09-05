@@ -544,7 +544,9 @@ Resources for DK Hostmaster WHOIS support can be found below.
 <a id="mailing-list"></a>
 ### Mailing list
 
-DK Hostmaster operates a mailing list for discussion and inquiries  about the DK Hostmaster WHOIS service. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
+DK Hostmaster operates a mailing list for discussion and inquiries about the DK Hostmaster WHOIS service. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the scope of technical discussion will not be responded to.
+
+Please report any issues via the designated channles and they will be passed on to the appropriate entities within DK Hostmaster A/S.
 
 - `tech-discuss+subscribe@liste.dk-hostmaster.dk`
 
