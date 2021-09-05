@@ -532,7 +532,7 @@ Here is a list of documents and references used in this document
 1. [DK Hostmaster Name Service Specification][DKHMNS]
 1. [RFC:3912 WHOIS Protocol Specification][RFC:3912]
 1. [RFC:5891 Internationalized Domain Names in Applications (IDNA): Protocol][RFC:5891]
-1. [ISO-3166-1: Alpha-2. two-letter country code][ISO.3166-1]
+1. [ISO-3166-1: Alpha-2. two-letter country code][ISO-3166-1]
 1. [ISO-8601: International date format][ISO-8601]
 1. [ISO-8859-1: 8-bit single-byte coded graphic character sets][ISO-8859-1]
 
