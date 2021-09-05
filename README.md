@@ -571,6 +571,7 @@ The DK Hostmaster website service page
 | `Active`              | Domain name is or being published to the zone                                      |
 | `Deactivated`         | Domain name is not being published to the zone                                     |
 | `Reserved`            | Domain name is not being published to the zone (activation required by registrant) |
+| `Offered to waiting list` | Domain name has been offered to a waiting list position (action pending registrant) |
 
 [DKHMTAC]: https://www.dk-hostmaster.dk/en/general-conditions
 [DKHMNS]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
