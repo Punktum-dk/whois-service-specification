@@ -5,8 +5,8 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
-2021-09-05
-Revision: 4.1
+2021-09-09
+Revision: 5.0
 
 ## Table of Contents
 
@@ -76,6 +76,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 5.0 2021-09-09
+  - Relabelled to version 5.0 to follow version number
 
 - 4.1 2021-09-05
   - Improved descriptions on available environments and test data
