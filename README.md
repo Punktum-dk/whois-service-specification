@@ -12,42 +12,60 @@ Revision: 5.0
 
 <!-- MarkdownTOC bracket=round levels="1,2,3,4" indent="  " autolink="true" autoanchor="true" -->
 
-- [Introduction](#introduction)
-- [About this Document](#about-this-document)
-  - [License](#license)
-  - [Document History](#document-history)
-- [The .dk Registry in Brief](#the-dk-registry-in-brief)
-- [Registrar Collaboration Model](#registrar-collaboration-model)
-- [Features](#features)
-- [Available Environments](#available-environments)
-  - [Production Environment](#production-environment)
-  - [Sandbox Environment](#sandbox-environment)
-- [Implementation Limitations](#implementation-limitations)
-  - [Handle Inquiry](#handle-inquiry-limitation)
-  - [Encoding](#encoding)
-  - [Rate Limiting](#rate-limiting)
-- [Service](#service)
-  - [Domain name query](#domain-name-query)
-    - [Example query for domain name information](#example-query-for-domain-name-information)
-    - [Example domain name query using punycode](#example-domain-name-query-using-punycode)
-    - [Example domain name query using UTF-8](#example-domain-name-query-using-utf-8)
-    - [Example domain name query with domain marked for deletion](#example-domain-name-query-with-domain-marked-for-deletion)
-    - [Example domain name query including handles](#example-domain-name-query-including-handles)
-    - [Example domain name query for domain name offered to waiting list](#example-domain-name-query-for-domain-offered-to-waiting-list)
-  - [Host name query](#host-name-query)
-    - [Example query for host information](#example-query-for-host-information)
-  - [Handle inquiry](#handle-inquiry)
-  - [Additional Help](#additional-help)
-    - [Request](#request)
-    - [Response](#response)
-- [Test Data](#test-data)
-- [References](#references)
-- [Resources](#resources)
-  - [Mailing list](#mailing-list)
-  - [Issue Reporting](#issue-reporting)
-  - [Additional Information](#additional-information)
-- [Appendices](#appendices)
-  - [Domain Status Values](#domain_status_values)
+- [DK Hostmaster WHOIS Service Specification](#dk-hostmaster-whois-service-specification)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [About this Document](#about-this-document)
+    - [License](#license)
+    - [Document History](#document-history)
+  - [The .dk Registry in Brief](#the-dk-registry-in-brief)
+  - [Registrar Collaboration Model](#registrar-collaboration-model)
+  - [Features](#features)
+  - [Available Environments](#available-environments)
+    - [Production Environment](#production-environment)
+    - [Sandbox Environment](#sandbox-environment)
+  - [Implementation Limitations](#implementation-limitations)
+    - [Handle Inquiry](#handle-inquiry)
+    - [Encoding](#encoding)
+    - [Rate Limiting](#rate-limiting)
+  - [Service](#service)
+    - [Domain name query](#domain-name-query)
+      - [Example query for domain name information](#example-query-for-domain-name-information)
+        - [Request](#request)
+        - [Response](#response)
+      - [Example domain name query using punycode](#example-domain-name-query-using-punycode)
+        - [Request](#request-1)
+        - [Response](#response-1)
+      - [Example domain name query using UTF-8](#example-domain-name-query-using-utf-8)
+        - [Request](#request-2)
+        - [Response](#response-2)
+      - [Example domain name query with domain marked for deletion](#example-domain-name-query-with-domain-marked-for-deletion)
+        - [Request](#request-3)
+        - [Response](#response-3)
+      - [Example domain name query including handles](#example-domain-name-query-including-handles)
+        - [Request](#request-4)
+        - [Response](#response-4)
+      - [Example domain name query for domain name offered to waiting list](#example-domain-name-query-for-domain-name-offered-to-waiting-list)
+        - [Request](#request-5)
+        - [Response](#response-5)
+    - [Host name query](#host-name-query)
+      - [Example query for host information](#example-query-for-host-information)
+        - [Request](#request-6)
+        - [Response](#response-6)
+    - [Handle inquiry](#handle-inquiry-1)
+    - [Additional Help](#additional-help)
+      - [Request](#request-7)
+      - [Response](#response-7)
+  - [Test Data](#test-data)
+    - [Domains](#domains)
+    - [Waiting List](#waiting-list)
+  - [References](#references)
+  - [Resources](#resources)
+    - [Mailing list](#mailing-list)
+    - [Issue Reporting](#issue-reporting)
+    - [Additional Information](#additional-information)
+  - [Appendices](#appendices)
+    - [Domain Status Values](#domain-status-values)
 
 <!-- /MarkdownTOC -->
 
@@ -138,7 +156,7 @@ The WHOIS will indicate choice of administrative model for a given domain name, 
 
 If this field is omitted the domain name is under registrant management.
 
-You can find more information on [the two different models]([models]) on the DK Hostmaster website, together with more information on [the concept behind the registrar model][concept].
+You can find more information on [the two different models][models] on the DK Hostmaster website, together with more information on [the concept behind the registrar model][concept].
 
 <a id="features"></a>
 ## Features
@@ -671,7 +689,7 @@ The DK Hostmaster website service page
 | `Offered to waiting list` | Domain name has been offered to a waiting list position (action pending registrant) |
 
 [DKHMTAC]: https://www.dk-hostmaster.dk/en/general-conditions
-[DKHMNSDOM]: https://github.com/DK-Hostmaster/dkhm-name-service-specification
+[DKHMNS]: https://github.com/DK-Hostmaster/dkhm-name-service-specification
 [DKHMNSDOM]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
 [DKHMNSGLUE]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#glue-records
 [DKHMDAS]: https://github.com/DK-Hostmaster/das-service-specification
