@@ -1,6 +1,6 @@
-![DK Hostmaster Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
+![Punktum dk Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
 
-# DK Hostmaster WHOIS Service Specification
+# Punktum dk WHOIS Service Specification
 
 ![Markdownlint Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Spellcheck%20Action/badge.svg)
@@ -54,25 +54,25 @@ Revision: 5.0
 <a id="introduction"></a>
 ## Introduction
 
-This document describes and specifies the implementation offered by DK Hostmaster A/S for interaction with the central registry for the ccTLD dk using the WHOIS Service. It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of the WHOIS protocol and possibly DNS registration.
+This document describes and specifies the implementation offered by Punktum dk A/S for interaction with the central registry for the ccTLD dk using the WHOIS Service. It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of the WHOIS protocol and possibly DNS registration.
 
-The WHOIS service in not optimal for structured querying, both due to the lack of structure in the protocol specification and due to the constraints on the public service offered by DK Hostmaster. If you are a registrar, you might be interested in [the DK Hostmaster Domain Availability Service (DAS)][DKHMDAS] as an alternative.
+The WHOIS service in not optimal for structured querying, both due to the lack of structure in the protocol specification and due to the constraints on the public service offered by Punktum dk. If you are a registrar, you might be interested in [the Punktum dk Domain Availability Service (DAS)][DKHMDAS] as an alternative.
 
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes version 5 (5.X.X) of the DK Hostmaster WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
-The document describes the current DK Hostmaster WHOIS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
+This specification describes version 5 (5.X.X) of the Punktum dk WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
+The document describes the current Punktum dk WHOIS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
-:warning: DK Hostmaster specific features might not be supported by all clients and operating systems.
+:warning: Punktum dk specific features might not be supported by all clients and operating systems.
 
 Do note all command lines examples were created on MacOS version 10.11 using the `whois` command line client shipped with this version, updates to this client and operating system are not automatically reflected in the specification under the clause stated above.
 
 <a id="license"></a>
 ### License
 
-This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
+This document is copyright by Punktum dk A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
 <a id="document-history"></a>
 ### Document History
@@ -120,16 +120,16 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="the-dk-registry-in-brief"></a>
 ## The .dk Registry in Brief
 
-DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
+Punktum dk is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with Punktum dk maintaining the central DNS registry.
 
-The WHOIS service offered by DK Hostmaster A/S aims to adhere to the WHOIS standard (see also [RFC:3912]).
+The WHOIS service offered by Punktum dk A/S aims to adhere to the WHOIS standard (see also [RFC:3912]).
 
 <a id="registrar-collaboration-model"></a>
 ## Registrar Collaboration Model
 
 The registrar collaboration model allows registrars to fully handle administration of domain names.
 
-DK Hostmaster offers two models of administration:
+Punktum dk offers two models of administration:
 
 - "Registrar Management"
 - "Registrant Management"
@@ -138,7 +138,7 @@ The WHOIS will indicate choice of administrative model for a given domain name, 
 
 If this field is omitted the domain name is under registrant management.
 
-You can find more information on [the two different models]([models]) on the DK Hostmaster website, together with more information on [the concept behind the registrar model][concept].
+You can find more information on [the two different models]([models]) on the Punktum dk website, together with more information on [the concept behind the registrar model][concept].
 
 <a id="features"></a>
 ## Features
@@ -153,14 +153,14 @@ The service implements the following features.
 <a id="available-environments"></a>
 ## Available Environments
 
-DK Hostmaster offers the following environments:
+Punktum dk offers the following environments:
 
 | Environment | Role | Policies |
 | ----------- | ---- | ----------- |
-| production  | production | This environment is the production environment for the DK Hostmaster WHOIS Service |
-| sandbox     | development | This environment is intended for client development towards the DK Hostmaster WHOIS Service |
+| production  | production | This environment is the production environment for the Punktum dk WHOIS Service |
+| sandbox     | development | This environment is intended for client development towards the Punktum dk WHOIS Service |
 
-For information on what service and specification is applicable and available, consult the [DK Hostmaster WHOIS Service Wiki][WIKI]
+For information on what service and specification is applicable and available, consult the [Punktum dk WHOIS Service Wiki][WIKI]
 For use please see the section on [Test Data](#test-data).
 
 <a id="production-environment"></a>
@@ -184,7 +184,7 @@ In general the service is not localized and all WHOIS information is provided in
 <a id="handle-inquiry-limitation"></a>
 ### Handle Inquiry
 
-As of service version 4 (4.X.X) DK Hostmaster does not support inquries for contact object handles/user-ids
+As of service version 4 (4.X.X) Punktum dk does not support inquries for contact object handles/user-ids
 
 <a id="encoding"></a>
 ### Encoding
@@ -216,7 +216,7 @@ Meaning that `192.0.2.41` and `192.0.2.52` can not have simultaneous connections
 
 This is an example of a standard inquiry for a domain name.
 
-The constraints on a domain name in the .dk zone is described in the [DK Hostmaster Name Service Specification][DKHMNSDOM].
+The constraints on a domain name in the .dk zone is described in the [Punktum dk Name Service Specification][DKHMNSDOM].
 
 <a id="example-query-for-domain-name-information"></a>
 #### Example query for domain name information
@@ -236,18 +236,18 @@ The standard response look as follows:
 ```bash
 # Hello XX.XX.XX.XX. Your session has been logged.
 #
-# Copyright (c) 2002 - 2021 by DK Hostmaster A/S
+# Copyright (c) 2002 - 2021 by Punktum dk A/S
 #
 # Version: 5.0.0
 #
-# The data in the DK Whois database is provided by DK Hostmaster A/S
+# The data in the DK Whois database is provided by Punktum dk A/S
 # for information purposes only, and to assist persons in obtaining
 # information about or related to a domain name registration record.
 # We do not guarantee its accuracy. We will reserve the right to remove
 # access for entities abusing the data, without notice.
 #
 # Any use of this material to target advertising or similar activities
-# are explicitly forbidden and will be prosecuted. DK Hostmaster A/S
+# are explicitly forbidden and will be prosecuted. Punktum dk A/S
 # requests to be notified of any such activities or suspicions thereof.
 
 Domain:               eksempel.dk
@@ -274,7 +274,7 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 The IP address has been masked for the example, As stated all request are logged.
 
 ```
-## Copyright (c) 2002 - 2021 by DK Hostmaster A/S
+## Copyright (c) 2002 - 2021 by Punktum dk A/S
 ```
 
 Copyright notice.
@@ -286,14 +286,14 @@ Copyright notice.
 This is the version string of the service. The service uses [semantic versioning][SEMVER], so this is major release `3`, No feature or bug releases has been made indicated by the minor release indicator: `0` and the patch release indicator:`0`.
 
 ```
-## The data in the DK Whois database is provided by DK Hostmaster A/S
+## The data in the DK Whois database is provided by Punktum dk A/S
 ## for information purposes only, and to assist persons in obtaining
 ## information about or related to a domain name registration record.
 ## We do not guarantee its accuracy. We will reserve the right to remove
 ## access for entities abusing the data, without notice.
 #
 ## Any use of this material to target advertising or similar activities
-## are explicitly forbidden and will be prosecuted. DK Hostmaster A/S
+## are explicitly forbidden and will be prosecuted. Punktum dk A/S
 ## requests to be notified of any such activities or suspicions thereof.
 ```
 
@@ -422,7 +422,7 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 <a id="example-domain-name-query-including-handles"></a>
 #### Example domain name query including handles
 
-DK Hostmaster's WHOIS support listing handles associated with a given domain.
+Punktum dk's WHOIS support listing handles associated with a given domain.
 
 ##### Request
 
@@ -458,7 +458,7 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 <a id="example-domain-name-query-for-domain-name-offered-to-waiting-list"></a>
 #### Example domain name query for domain name offered to waiting list
 
-DK Hostmaster's WHOIS support listing can provide information, limited though, for domain names offered from to a waiting list position, this is for consistency with EPP, DAS and other services.
+Punktum dk's WHOIS support listing can provide information, limited though, for domain names offered from to a waiting list position, this is for consistency with EPP, DAS and other services.
 
 ##### Request
 
@@ -518,16 +518,16 @@ Nameserver:           auth02.ns.dk-hostmaster.dk
 Glue:                 Not being spooled
 ```
 
-The above examples are relevant for name server hosts ending in `.dk`, since DK Hostmaster require glue records for name servers ending in `.dk`, which serve there own zone. Glue records are not required for name servers with hostnames served by other TLDs.
+The above examples are relevant for name server hosts ending in `.dk`, since Punktum dk require glue records for name servers ending in `.dk`, which serve there own zone. Glue records are not required for name servers with hostnames served by other TLDs.
 
-See the section on glue records in the [DK Hostmaster Name Service Specification][DKHMNSGLUE].
+See the section on glue records in the [Punktum dk Name Service Specification][DKHMNSGLUE].
 
 Do note that the host (name server) no longer supports disclosing name server administrators as part of the response.
 
 <a id="handle-inquiry"></a>
 ### Handle inquiry
 
-As described under Implementation Limitations, DK Hostmaster does not support queries on handles.
+As described under Implementation Limitations, Punktum dk does not support queries on handles.
 
 <a id="additional-help"></a>
 ### Additional Help
@@ -590,18 +590,18 @@ The domain name can be queried via the WHOIS service in the sandbox environment:
 whois -h whois-sandbox.dk-hostmaster.dk waiting-list.dk
 # Hello X.X.X.X. Your session has been logged.
 #
-# Copyright (c) 2002 - 2021 by DK Hostmaster A/S
+# Copyright (c) 2002 - 2021 by Punktum dk A/S
 #
 # Version: 5.0.0
 #
-# The data in the DK Whois database is provided by DK Hostmaster A/S
+# The data in the DK Whois database is provided by Punktum dk A/S
 # for information purposes only, and to assist persons in obtaining
 # information about or related to a domain name registration record.
 # We do not guarantee its accuracy. We will reserve the right to remove
 # access for entities abusing the data, without notice.
 #
 # Any use of this material to target advertising or similar activities
-# are explicitly forbidden and will be prosecuted. DK Hostmaster A/S
+# are explicitly forbidden and will be prosecuted. Punktum dk A/S
 # requests to be notified of any such activities or suspicions thereof.
 
 Domain:               waiting-list.dk
@@ -623,8 +623,8 @@ For more details on the sandbox environment, please see the [sandbox environment
 
 Here is a list of documents and references used in this document
 
-1. [DK Hostmaster General Terms and Conditions][DKHMTAC]
-1. [DK Hostmaster Name Service Specification][DKHMNS]
+1. [Punktum dk General Terms and Conditions][DKHMTAC]
+1. [Punktum dk Name Service Specification][DKHMNS]
 1. [RFC:3912 WHOIS Protocol Specification][RFC:3912]
 1. [RFC:5891 Internationalized Domain Names in Applications (IDNA): Protocol][RFC:5891]
 1. [ISO-3166-1: Alpha-2. two-letter country code][ISO-3166-1]
@@ -634,14 +634,14 @@ Here is a list of documents and references used in this document
 <a id="resources"></a>
 ## Resources
 
-Resources for DK Hostmaster WHOIS support can be found below.
+Resources for Punktum dk WHOIS support can be found below.
 
 <a id="mailing-list"></a>
 ### Mailing list
 
-DK Hostmaster operates a mailing list for discussion and inquiries about the DK Hostmaster WHOIS service. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the scope of technical discussion will not be responded to.
+Punktum dk operates a mailing list for discussion and inquiries about the Punktum dk WHOIS service. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the scope of technical discussion will not be responded to.
 
-Please report any issues via the designated channels and they will be passed on to the appropriate entities within DK Hostmaster A/S.
+Please report any issues via the designated channels and they will be passed on to the appropriate entities within Punktum dk A/S.
 
 - `tech-discuss+subscribe@liste.dk-hostmaster.dk`
 
@@ -653,7 +653,7 @@ For issue reporting related to this specification, the WHOIS implementation or t
 <a id="additional-information"></a>
 ### Additional Information
 
-The DK Hostmaster website service page
+The Punktum dk website service page
 
 - `https://www.dk-hostmaster.dk/en/whois`
 
