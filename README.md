@@ -1,5 +1,3 @@
-![Punktum dk Logo][DKHMLOGO]
-
 # Punktum dk WHOIS Service Specification
 
 ![Markdownlint Action](https://github.com/DK-Hostmaster/whois-service-specification/workflows/Markdownlint%20Action/badge.svg)
