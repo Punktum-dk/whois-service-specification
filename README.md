@@ -1,4 +1,4 @@
-![Punktum dk Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
+![Punktum dk Logo][DKHMLOGO]
 
 # Punktum dk WHOIS Service Specification
 
