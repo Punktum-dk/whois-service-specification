@@ -4,7 +4,7 @@
 
 <!-- MarkdownTOC bracket=round levels="1,2,3,4" indent="  " autolink="true" autoanchor="true" -->
 
-- [DK Hostmaster WHOIS Service Specification](#dk-hostmaster-whois-service-specification)
+- [Punktum dk WHOIS Service Specification](#dk-hostmaster-whois-service-specification)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [About this Document](#about-this-document)
@@ -183,7 +183,7 @@ Production is available at: `whois.dk-hostmaster.dk` port `43`
 <a id="sandbox-environment"></a>
 ### Sandbox Environment
 
-- Queries made to this environment will reflect data only available in the isolated sandbox environment, please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details.
+- Queries made to this environment will reflect data only available in the isolated sandbox environment, please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification) for details.
 - Please additional data please, see the section on [Test Data](#test-data).
 
 <a id="implementation-limitations"></a>
@@ -587,7 +587,7 @@ The sandbox uses a combination of a predefined set of test data and data added t
 | `dk-hostmaster.dk` | `Active` | The domain is visible and active |
 | `æøåöäüé.dk` | `unavailable` | The domain is visible and active |
 | `waiting-list.dk` | `Offered to waiting list` | The domain status is awaiting the designated registrant |
-| * | * | Depending on what domains have been registered with the sandbox environment. Please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details. |
+| * | * | Depending on what domains have been registered with the sandbox environment. Please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification) for details. |
 
 <a id="waiting-list"></a>
 ### Waiting List
@@ -626,7 +626,7 @@ Status:               Offered to waiting list
 
 Do note this behaviour is reserved for the sandbox environment.
 
-For more details on the sandbox environment, please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification).
+For more details on the sandbox environment, please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification).
 
 <a id="references"></a>
 ## References
@@ -680,11 +680,11 @@ The Punktum dk website service page
 | `Reserved`            | Domain name is not being published to the zone (activation required by registrant) |
 | `Offered to waiting list` | Domain name has been offered to a waiting list position (action pending registrant) |
 
-[DKHMTAC]: https://www.dk-hostmaster.dk/en/general-conditions
-[DKHMNS]: https://github.com/DK-Hostmaster/dkhm-name-service-specification
-[DKHMNSDOM]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
-[DKHMNSGLUE]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#glue-records
-[DKHMDAS]: https://github.com/DK-Hostmaster/das-service-specification
+[DKHMTAC]: https://punktum.dk/en/articles/terms-and-procedures
+[DKHMNS]: https://github.com/Punktum-dk/dkhm-name-service-specification
+[DKHMNSDOM]: https://github.com/Punktum-dk/dkhm-name-service-specification#domain-names
+[DKHMNSGLUE]: https://github.com/Punktum-dk/dkhm-name-service-specification#glue-records
+[DKHMDAS]: https://github.com/Punktum-dk/das-service-specification
 [RFC:3912]: https://tools.ietf.org/html/rfc3912
 [RFC:5891]: https://tools.ietf.org/html/rfc5891
 [ISO-3166-1]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
@@ -693,4 +693,4 @@ The Punktum dk website service page
 [SEMVER]: https://semver.org/
 [concept]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
 [models]: https://www.dk-hostmaster.dk/en/node/819
-[WIKI]: https://github.com/DK-Hostmaster/whois-service-specification/wiki
+[WIKI]: https://github.com/Punktum-dk/whois-service-specification/wiki
