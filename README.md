@@ -210,13 +210,9 @@ Please see the section on service for more information on how to utilize this.
 <a id="rate-limiting"></a>
 ### Rate Limiting
 
-We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service.
+To ensure high quality of service, we allow 1 request per second per source ip. Exceeding the rate limit triggers a temporary ban.
 
-Current limit is set to 1 request per second.
-
-In addition the service only allow 1 TCP-connection per. (IPv4)/24.
-
-Meaning that `192.0.2.41` and `192.0.2.52` can not have simultaneous connections, but `192.0.2.41` and `192.0.3.52` can.
+We reserve the right to adjust the rate limit and ban abusers for longer periods of time.
 
 <a id="service"></a>
 ## Service
