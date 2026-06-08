@@ -337,7 +337,7 @@ Then we get to the data.
 | `Delete date` | Date indicating deletion in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark. Do note this field is only available if is has been set |
 | `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
 | `VID` | Indication whether VID service is active, values either `yes` or `no` |
-| `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation`, `Unsigned delegation, DNSSEC disabled, no records`, `Unsigned delegation, DNSSEC disabled, keys unpublished`, `Unsigned delegation, DNSSEC disabled`, `Unsigned delegation, no records`, `Unsigned delegation, DNSSEC enabled, keys unpublished` or `Unknown status` |
+| `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation`|
 | `Status` | Status of the domain name, please see the appendix |
 | `Nameservers` | List of name servers, serving the inquired domain name |
 
@@ -363,7 +363,7 @@ Registered:           2010-06-14
 Expires:              2019-06-30
 Registration period:  1 year
 VID:                  no
-DNSSEC:               Unsigned delegation, no records
+DNSSEC:               Unsigned delegation
 Status:               Active
 
 Nameservers
@@ -391,7 +391,7 @@ Registered:           2010-06-14
 Expires:              2019-06-30
 Registration period:  1 year
 VID:                  no
-DNSSEC:               Unsigned delegation, no records
+DNSSEC:               Unsigned delegation
 Status:               Active
 
 Nameservers
