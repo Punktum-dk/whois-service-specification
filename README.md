@@ -173,7 +173,7 @@ For use please see the section on [Test Data](#test-data).
 
 - requests made to this environment will reflect live production data
 
-Production is available at: `whois.dk-hostmaster.dk` port `43`
+Production is available at: `whois.punktum.dk` port `43`
 
 <a id="sandbox-environment"></a>
 ### Sandbox Environment
@@ -626,6 +626,3 @@ The Punktum dk website domain search page
 [ISO-8601]: https://en.wikipedia.org/wiki/ISO_8601
 [ISO-8859-1]: https://en.wikipedia.org/wiki/ISO/IEC_8859-1
 [SEMVER]: https://semver.org/
-[concept]: https://www.dk-hostmaster.dk/en/new-basis-collaboration-between-registrars-and-dk-hostmaster
-[models]: https://www.dk-hostmaster.dk/en/node/819
-[WIKI]: https://github.com/Punktum-dk/whois-service-specification/wiki
