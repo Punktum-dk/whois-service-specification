@@ -71,21 +71,16 @@ The WHOIS service in not optimal for structured querying, both due to the lack o
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes version 5 (5.X.X) of the Punktum dk WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
+This specification describes version 6.3.x of the Punktum dk WHOIS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
 The document describes the current Punktum dk WHOIS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
-:warning: Punktum dk specific features might not be supported by all clients and operating systems.
-
-Do note all command lines examples were created on MacOS version 10.11 using the `whois` command line client shipped with this version, updates to this client and operating system are not automatically reflected in the specification under the clause stated above.
-
-<a id="license"></a>
-### License
-
-This document is copyright by Punktum dk A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
-
 <a id="document-history"></a>
 ### Document History
+
+- 6.3 2026-06-08
+  - Added documentation regarding display of registrant ID validation status
+  - Adjusted examples regarding redacted/hidden registrant information
 
 - 5.0 2021-09-09
   - Relabelled to version 5.0 to follow version number
@@ -244,11 +239,11 @@ $ whois eksempel.dk
 The standard response look as follows:
 
 ```bash
-# Hello XX.XX.XX.XX. Your session has been logged.
+# Hello xx.xx.xx.xx. Your session has been logged.
 #
-# Copyright (c) 2002 - 2021 by Punktum dk A/S
+# Copyright (c) 2002 - 2026 by Punktum dk A/S
 #
-# Version: 5.0.0
+# Version: 6.3.0
 #
 # The data in the DK Whois database is provided by Punktum dk A/S
 # for information purposes only, and to assist persons in obtaining
@@ -263,8 +258,8 @@ The standard response look as follows:
 Domain:               eksempel.dk
 DNS:                  eksempel.dk
 Registered:           1999-05-17
-Expires:              2022-06-30
-Registration period:  5 years
+Expires:              2027-06-30
+Registration period:  1 year
 VID:                  yes
 DNSSEC:               Signed delegation
 Status:               Active
@@ -272,28 +267,29 @@ Status:               Active
 Nameservers
 Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
+Hostname:             auth03.ns.dk-hostmaster.dk
 
 # Use option --show-handles to get handle information.
-# whois -h whois.dk-hostmaster.dk HELP for more help.
+# whois -h whois.punktum.dk HELP for more help.
 ```
 
 ```
-## Hello XX.XX.XX.XX. Your session has been logged.
+## Hello xx.xx.xx. Your session has been logged.
 ```
 
 The IP address has been masked for the example, As stated all request are logged.
 
 ```
-## Copyright (c) 2002 - 2021 by Punktum dk A/S
+## Copyright (c) 2002 - 2026 by Punktum dk A/S
 ```
 
 Copyright notice.
 
 ```
-## Version: 5.0.0
+## Version: 6.3.0
 ```
 
-This is the version string of the service. The service uses [semantic versioning][SEMVER], so this is major release `3`, No feature or bug releases has been made indicated by the minor release indicator: `0` and the patch release indicator:`0`.
+This is the version string of the service. The service uses [semantic versioning][SEMVER], so this is major release `6`, No feature or bug releases has been made indicated by the minor release indicator: `0` and the patch release indicator:`0`.
 
 ```
 ## The data in the DK Whois database is provided by Punktum dk A/S
@@ -313,9 +309,8 @@ Terms of use notice.
 Domain:               eksempel.dk
 DNS:                  eksempel.dk
 Registered:           1999-05-17
-Expires:              2022-06-30
-Registrar:            All Things DK Domains
-Registration period:  5 years
+Expires:              2027-06-30
+Registration period:  1 year
 VID:                  yes
 DNSSEC:               Signed delegation
 Status:               Active
@@ -323,6 +318,7 @@ Status:               Active
 Nameservers
 Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
+Hostname:             auth03.ns.dk-hostmaster.dk
 ```
 
 Then we get to the data.
@@ -360,15 +356,16 @@ Observe the difference between the `Domain` and `DNS` fields
 Domain:               æøåöäüé.dk
 DNS:                  xn--4cabco7dk5a.dk
 Registered:           2010-06-14
-Expires:              2019-06-30
+Expires:              2023-06-30
 Registration period:  1 year
 VID:                  no
-DNSSEC:               Unsigned delegation, no records
+DNSSEC:               Signed delegation
 Status:               Active
 
 Nameservers
 Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
+Hostname:             auth03.ns.dk-hostmaster.dk
 ```
 
 <a id="example-domain-name-query-using-utf-8"></a>
@@ -388,15 +385,16 @@ $ whois -c dk " --charset=utf8 æøåöäüé.dk"
 Domain:               æøåöäüé.dk
 DNS:                  xn--4cabco7dk5a.dk
 Registered:           2010-06-14
-Expires:              2019-06-30
+Expires:              2023-06-30
 Registration period:  1 year
 VID:                  no
-DNSSEC:               Unsigned delegation, no records
+DNSSEC:               Signed delegation
 Status:               Active
 
 Nameservers
 Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
+Hostname:             auth03.ns.dk-hostmaster.dk
 ```
 
 <a id="example-domain-name-query-with-domain-marked-for-deletion"></a>
@@ -404,30 +402,7 @@ Hostname:             auth02.ns.dk-hostmaster.dk
 
 If a domain name is marked for deletion prior to the expiration date a deletion date is calculated.
 
-`Delete date:          2019-07-14`
-
-##### Request
-
-```bash
-$ whois eksempel.dk
-```
-
-##### Response
-
-```
-Domain:               eksempel.dk
-DNS:                  eksempel.dk
-Registered:           1999-05-17
-Expires:              2022-06-30
-Registration period:  5 years
-VID:                  yes
-DNSSEC:               Signed delegation
-Status:               Active
-
-Nameservers
-Hostname:             auth01.ns.dk-hostmaster.dk
-Hostname:             auth02.ns.dk-hostmaster.dk
-```
+`Delete date:          2026-07-14`
 
 <a id="example-domain-name-query-including-handles"></a>
 #### Example domain name query including handles
@@ -446,29 +421,33 @@ $ whois -c dk ' --show-handles eksempel.dk'
 Domain:               eksempel.dk
 DNS:                  eksempel.dk
 Registered:           1999-05-17
-Expires:              2022-06-30
-Registration period:  5 years
+Expires:              2027-06-30
+Registration period:  1 year
 VID:                  yes
 DNSSEC:               Signed delegation
 Status:               Active
 
 Registrant
-Handle:               ***N/A***
-Name:                 DK HOSTMASTER A/S
+Handle:               DATA REDACTED
+Name:                 Punktum dk A/S
 Address:              Ørestads Boulevard 108, 11.
 Postalcode:           2300
 City:                 København S
 Country:              DK
+Phone:                +45 33646060
+Email:                info@punktum.dk
+ID status:            ID verified via electronic ID
 
 Nameservers
 Hostname:             auth01.ns.dk-hostmaster.dk
 Hostname:             auth02.ns.dk-hostmaster.dk
+Hostname:             auth03.ns.dk-hostmaster.dk
 ```
 
 <a id="example-domain-name-query-for-domain-name-offered-to-waiting-list"></a>
 #### Example domain name query for domain name offered to waiting list
 
-Punktum dk's WHOIS support listing can provide information, limited though, for domain names offered from to a waiting list position, this is for consistency with EPP, DAS and other services.
+Punktum dk's WHOIS support listing can provide information, limited though, for domain names offered from to a waiting list position, this is for consistency with EPP and other services.
 
 ##### Request
 
@@ -539,41 +518,6 @@ Do note that the host (name server) no longer supports disclosing name server ad
 
 As described under Implementation Limitations, Punktum dk does not support queries on handles.
 
-<a id="additional-help"></a>
-### Additional Help
-
-Additional help can be obtained on the command line using the following command:
-
-<a id="request"></a>
-#### Request
-
-```bash
-$ whois -h whois.dk-hostmaster.dk HELP
-```
-
-<a id="response"></a>
-#### Response
-
-```bash
-## Query syntax:
-##   [<options>] <query_string>
-## Available options:
-##   --charset=<charset>
-##   --accesscode=<accesscode>[:<accesscode>[:<accesscode>]]
-##   --show-handles
-## Available charsets:
-##   latin-1 also known as iso-8859-1 (default)
-##   utf-8
-## Example:
-##   --charset=latin-1 dk-hostmaster.dk
-##   --accesscode=C8850DF92ECB6CF581EF6C8FD31C1CDF dk-hostmaster.dk
-## Hint:
-##   Most Unix whois clients have problems with these options and tries
-##   to parse them themselves. To get around this, do lookups like this:
-##     whois " --charset=latin-1 dk-hostmaster.dk"
-##   Note the additional space after the first quote.
-```
-
 <a id="test-data"></a>
 ## Test Data
 
@@ -584,7 +528,7 @@ The sandbox uses a combination of a predefined set of test data and data added t
 
 | Domain name | Status | Notes |
 |-------------|--------|-------|
-| `dk-hostmaster.dk` | `Active` | The domain is visible and active |
+| `eksempel.dk` | `Active` | The domain is visible and active |
 | `æøåöäüé.dk` | `unavailable` | The domain is visible and active |
 | `waiting-list.dk` | `Offered to waiting list` | The domain status is awaiting the designated registrant |
 | * | * | Depending on what domains have been registered with the sandbox environment. Please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification) for details. |
@@ -646,26 +590,17 @@ Here is a list of documents and references used in this document
 
 Resources for Punktum dk WHOIS support can be found below.
 
-<a id="mailing-list"></a>
-### Mailing list
-
-Punktum dk operates a mailing list for discussion and inquiries about the Punktum dk WHOIS service. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the scope of technical discussion will not be responded to.
-
-Please report any issues via the designated channels and they will be passed on to the appropriate entities within Punktum dk A/S.
-
-- `tech-discuss+subscribe@liste.dk-hostmaster.dk`
-
 <a id="issue-reporting"></a>
 ### Issue Reporting
 
-For issue reporting related to this specification, the WHOIS implementation or the production environment, please contact us. You are of course welcome to post these to the mailing list mentioned above, otherwise use the regular support channels.
+For issue reporting related to this specification, the WHOIS implementation or the production environment, please contact us via https://punktum.dk/en/contact-customer-service
 
 <a id="additional-information"></a>
 ### Additional Information
 
-The Punktum dk website service page
+The Punktum dk website domain search page
 
-- `https://www.dk-hostmaster.dk/en/whois`
+- `https://www.punktum.dk/en/search-dk-domain`
 
 <a id="appendices"></a>
 ## Appendices
