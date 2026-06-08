@@ -205,13 +205,9 @@ Please see the section on service for more information on how to utilize this.
 <a id="rate-limiting"></a>
 ### Rate Limiting
 
-We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service.
+To ensure high quality of service, we allow 1 request per second per source ip. Exceeding the rate limit triggers a temporary ban.
 
-Current limit is set to 1 request per second.
-
-In addition the service only allow 1 TCP-connection per. (IPv4)/24.
-
-Meaning that `192.0.2.41` and `192.0.2.52` can not have simultaneous connections, but `192.0.2.41` and `192.0.3.52` can.
+We reserve the right to adjust the rate limit and ban abusers for longer periods of time.
 
 <a id="service"></a>
 ## Service
@@ -333,7 +329,7 @@ Then we get to the data.
 | `Delete date` | Date indicating deletion in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark. Do note this field is only available if is has been set |
 | `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
 | `VID` | Indication whether VID service is active, values either `yes` or `no` |
-| `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation`, `Unsigned delegation, DNSSEC disabled, no records`, `Unsigned delegation, DNSSEC disabled, keys unpublished`, `Unsigned delegation, DNSSEC disabled`, `Unsigned delegation, no records`, `Unsigned delegation, DNSSEC enabled, keys unpublished` or `Unknown status` |
+| `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation`|
 | `Status` | Status of the domain name, please see the appendix |
 | `Nameservers` | List of name servers, serving the inquired domain name |
 
@@ -359,7 +355,7 @@ Registered:           2010-06-14
 Expires:              2023-06-30
 Registration period:  1 year
 VID:                  no
-DNSSEC:               Signed delegation
+DNSSEC:               Unsigned delegation
 Status:               Active
 
 Nameservers
@@ -388,7 +384,7 @@ Registered:           2010-06-14
 Expires:              2023-06-30
 Registration period:  1 year
 VID:                  no
-DNSSEC:               Signed delegation
+DNSSEC:               Unsigned delegation
 Status:               Active
 
 Nameservers
