@@ -8,7 +8,6 @@
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [About this Document](#about-this-document)
-    - [License](#license)
     - [Document History](#document-history)
   - [The .dk Registry in Brief](#the-dk-registry-in-brief)
   - [Registrar Collaboration Model](#registrar-collaboration-model)
@@ -42,8 +41,6 @@
         - [Response](#response-5)
     - [Host name query](#host-name-query)
       - [Example query for host information](#example-query-for-host-information)
-        - [Request](#request-6)
-        - [Response](#response-6)
     - [Handle inquiry](#handle-inquiry-1)
     - [Additional Help](#additional-help)
       - [Request](#request-7)
@@ -160,9 +157,9 @@ The service implements the following features.
 
 Punktum dk offers the following environments:
 
-| Environment | Role | Policies |
-| ----------- | ---- | ----------- |
-| production  | production | This environment is the production environment for the Punktum dk WHOIS Service |
+| Environment | Role        | Policies                                                                                 |
+| ----------- | ----------- | ---------------------------------------------------------------------------------------- |
+| production  | production  | This environment is the production environment for the Punktum dk WHOIS Service          |
 | sandbox     | development | This environment is intended for client development towards the Punktum dk WHOIS Service |
 
 For information on what service and specification is applicable and available, consult the [Punktum dk WHOIS Service Wiki][WIKI]
@@ -319,19 +316,19 @@ Hostname:             auth03.ns.dk-hostmaster.dk
 
 Then we get to the data.
 
-| Field | Description |
-| ----- | ----------- |
-| `Domain` | The domain name, should match the one enquired about |
-| `DNS` | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891] |
-| `Registered` | Date of registration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark |
-| `Expires` | Date of expiration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark |
-| `Registrar` | This field is available if the inquired domain name is handled by a registrar, the field is omitted if the domain name is registrant handled, for more information see the chapter on "Registrar Collaboration Model" |
-| `Delete date` | Date indicating deletion in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark. Do note this field is only available if is has been set |
-| `Registration period` | Registration period (`1`, `2`, `3` or `5` years) |
-| `VID` | Indication whether VID service is active, values either `yes` or `no` |
-| `DNSSEC` | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation`|
-| `Status` | Status of the domain name, please see the appendix |
-| `Nameservers` | List of name servers, serving the inquired domain name |
+| Field                 | Description                                                                                                                                                                                                                                                                  |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Domain`              | The domain name, should match the one enquired about                                                                                                                                                                                                                         |
+| `DNS`                 | Version of the domain name inquired used in DNS, punycode for IDNA domain names [RFC:5891]                                                                                                                                                                                   |
+| `Registered`          | Date of registration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark                                                              |
+| `Expires`             | Date of expiration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark                                                                |
+| `Registrar`           | This field is available if the inquired domain name is handled by a registrar, the field is omitted if the domain name is registrant handled, for more information see the chapter on "Registrar Collaboration Model"                                                        |
+| `Delete date`         | Date indicating deletion in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark. Do note this field is only available if is has been set |
+| `Registration period` | Registration period (`1`, `2`, `3` or `5` years)                                                                                                                                                                                                                             |
+| `VID`                 | Indication whether VID service is active, values either `yes` or `no`                                                                                                                                                                                                        |
+| `DNSSEC`              | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation`                                                                                                                                                                      |
+| `Status`              | Status of the domain name, please see the appendix                                                                                                                                                                                                                           |
+| `Nameservers`         | List of name servers, serving the inquired domain name                                                                                                                                                                                                                       |
 
 <a id="example-domain-name-query-using-punycode"></a>
 #### Example domain name query using punycode
@@ -522,12 +519,12 @@ The sandbox uses a combination of a predefined set of test data and data added t
 <a id="domains"></a>
 ### Domains
 
-| Domain name | Status | Notes |
-|-------------|--------|-------|
-| `eksempel.dk` | `Active` | The domain is visible and active |
-| `æøåöäüé.dk` | `unavailable` | The domain is visible and active |
-| `waiting-list.dk` | `Offered to waiting list` | The domain status is awaiting the designated registrant |
-| * | * | Depending on what domains have been registered with the sandbox environment. Please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification) for details. |
+| Domain name       | Status                    | Notes                                                                                                                                                                                                        |
+|-------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `eksempel.dk`     | `Active`                  | The domain is visible and active                                                                                                                                                                             |
+| `æøåöäüé.dk`      | `unavailable`             | The domain is visible and active                                                                                                                                                                             |
+| `waiting-list.dk` | `Offered to waiting list` | The domain status is awaiting the designated registranat                                                                                                                                                     |
+| *                 | * i                       | Depending on what domains have been registered with the sandbox environment. Please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification) for details |
 
 <a id="waiting-list"></a>
 ### Waiting List
@@ -604,11 +601,11 @@ The Punktum dk website domain search page
 <a id="domain_status_values"></a>
 ### Domain Status Values
 
-| Status                | Description                                                                        |
-| --------------------- | ---------------------------------------------------------------------------------- |
-| `Active`              | Domain name is or being published to the zone                                      |
-| `Deactivated`         | Domain name is not being published to the zone                                     |
-| `Reserved`            | Domain name is not being published to the zone (activation required by registrant) |
+| Status                    | Description                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------- |
+| `Active`                  | Domain name is or being published to the zone                                       |
+| `Deactivated`             | Domain name is not being published to the zone                                      |
+| `Reserved`                | Domain name is not being published to the zone (activation required by registrant)  |
 | `Offered to waiting list` | Domain name has been offered to a waiting list position (action pending registrant) |
 
 [DKHMTAC]: https://punktum.dk/en/articles/terms-and-procedures
