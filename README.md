@@ -385,6 +385,7 @@ Nameservers
 Hostname:             ns1.test.com
 Hostname:             ns2.test.com
 Hostname:             ns3.test.com
+```
 
 <a id="example-domain-name-query-with-domain-marked-for-deletion"></a>
 #### Example domain name query with domain marked for deletion
