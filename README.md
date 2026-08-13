@@ -64,7 +64,7 @@ The WHOIS service is not optimal for structured querying, both due to the lack o
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes version 6.3.x of the Punktum dk WHOIS Implementation. Future releases will be reflected in updates to this document; please refer to the [Document History](#document-history) below for changes.
+This specification describes version 6.3.1 of the Punktum dk WHOIS Implementation. Future releases will be reflected in updates to this document; please refer to the [Document History](#document-history) below for changes.
 
 The document describes the current Punktum dk WHOIS implementation, for more general documentation on the WHOIS protocol please refer to the RFCs and additional resources in the [References](#references) and [Resources](#resources) chapters below.
 
@@ -146,7 +146,7 @@ The WHOIS service offered by Punktum dk A/S aims to adhere to the WHOIS standard
 
 The registrar collaboration model allows registrars to fully handle administration of domain names.
 
-Punktum dk offers two models of administration:
+A domain can be one of two models of administration:
 
 - "Registrar Management"
 - "Registrant Management"
@@ -171,10 +171,10 @@ The service implements the following features.
 
 Punktum dk offers the following environments:
 
-| Environment | Role        | Policies                                                                                 |
-| ----------- | ----------- | ---------------------------------------------------------------------------------------- |
-| production  | production  | This environment is the production environment for the Punktum dk WHOIS Service          |
-| sandbox     | development | This environment is intended for client development towards the Punktum dk WHOIS Service |
+| Environment | Policies                                                                                 |
+| ----------- | ---------------------------------------------------------------------------------------- |
+| production  | This environment is the production environment for the Punktum dk WHOIS Service          |
+| sandbox     | This environment is intended for client development towards the Punktum dk WHOIS Service |
 
 <a id="production-environment"></a>
 ### Production Environment
@@ -298,7 +298,7 @@ The remaining lines contain the actual domain name data:
 | `Expires`             | Date of expiration in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark                                                                |
 | `Registrar`           | This field is available if the inquired domain name is under registrar management; the field is omitted if the domain name is under registrant management. For more information see the chapter on "Registrar Collaboration Model"                                           |
 | `Delete date`         | Date indicating deletion in [ISO-8601] format: `YYYY-MM-DD`, the timezone is not expressed explicitly. The local time of the registry is used, meaning Central European Standard Time (`GMT+1`), Copenhagen/Denmark. Do note this field is only available if it has been set |
-| `Registration period` | Registration period (`1`, `2`, `3` or `5` years)                                                                                                                                                                                                                            |
+| `Registration period` | Registration period (`1` year)                                                                                                                                                                                                                            |
 | `VID`                 | Indication whether the VID service is active, values either `yes` or `no`. See [VID service][VID] for details                                                                                                                                                                |
 | `DNSSEC`              | Indication whether DNSSEC service is active, values either `Signed delegation` or `Unsigned delegation`                                                                                                                                                                      |
 | `Status`              | Status of the domain name, see the [Domain Status Values](#domain-status-values) appendix                                                                                                                                                                                    |
@@ -458,6 +458,8 @@ The `ID status` field can take the following values:
 | `ID verified by submission of documentation` | The registrant has verified their identity by submitting documentation                                          |
 | `ID checked by registrar`                    | The registrant has completed the identity check with their registrar                                            |
 | `Registrant approved after a risk assessment`| The registrant has been assessed by Punktum dk's risk engine as not required to complete the identity check     |
+
+👉 If the `ID status` field is excluded, then the registrant has not performed a identity check.
 
 <a id="example-domain-name-query-for-domain-name-offered-to-waiting-list"></a>
 #### Example domain name query for domain name offered to waiting list
